@@ -1,5 +1,4 @@
-- 👋 Hi, I’m Christos Gkoros
-- <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" height=20px width=20px alt="linkedin"> https://www.linkedin.com/in/christos-gkoros
+👋 Hi, wellcome to my playground!
 
 <!---
 Gorosc/Gorosc is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
