@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = 'Christos Gkoros'
 theme = 'ananke'
 
+
 [[params.ananke_socials]]
 name = "linkedin"
 url = "https://www.linkedin.com/in/christos-gkoros/"
@@ -15,4 +16,3 @@ url = "https://fosstodon.org/@cgkoros"
 [[params.ananke_socials]]
 name = "twitter"
 url = "https://twitter.com/christos_gkoros"
-
