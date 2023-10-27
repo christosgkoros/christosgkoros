@@ -1,7 +1,6 @@
 +++
 title = '7 Steps to Review an Api Design'
 date = 2023-10-27T10:06:03+03:00
-draft = true
 +++
 
 ## Lay out the Context
