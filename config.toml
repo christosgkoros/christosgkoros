@@ -1,18 +1,47 @@
 baseURL = 'https://christosgkoros.com/'
 languageCode = 'en-us'
-title = 'Christos Gkoros'
+title = 'christos gkoros'
 theme = 'ananke'
 
+Paginate = 10
+
+googleAnalytics = "G-3J8BX045QR"
+
+enableRobotsTXT = true
+
+[params]
+  text_color = ""
+  author = ""
+  favicon = ""
+  site_logo = ""
+  description = "Hi! This my personal space for sharing things that I work with, learn and find interesting"
+  # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
+  background_color_class = "bg-black"
+  recent_posts_number = 3
+
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
 
 [[params.ananke_socials]]
 name = "linkedin"
 url = "https://www.linkedin.com/in/christos-gkoros/"
+share = false
 [[params.ananke_socials]]
 name = "github"
 url = "https://github.com/christosgkoros"
 [[params.ananke_socials]]
 name = "mastodon"
 url = "https://fosstodon.org/@cgkoros"
+rel= "me noopener"
 [[params.ananke_socials]]
 name = "twitter"
 url = "https://twitter.com/christos_gkoros"
+share = false
+[[params.ananke_socials]]
+name = "postman"
+label = "Postman"
+url = "https://www.postman.com/gkorosc"
+color = "#ff6800"

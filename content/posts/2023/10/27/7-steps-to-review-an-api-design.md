@@ -1,8 +1,8 @@
 +++
 title = '7 Steps to Review an Api Design'
 date = 2023-10-27T10:06:03+03:00
+tags = ['apis', 'api-design', 'api-design-review']
 +++
-
 ## Lay out the Context
 An API does not live in isolation. It is part of business, involves people, and may sit next to other APIs. All these are necessary to scope and design the API. Instead of that, you could create many integration pipes. It would be difficult to understand them all in a few years.
 
