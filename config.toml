@@ -42,6 +42,6 @@ url = "https://twitter.com/christos_gkoros"
 share = false
 [[params.ananke_socials]]
 name = "postman"
-label = "Postman"
+label = "postman"
 url = "https://www.postman.com/gkorosc"
 color = "#ff6800"
