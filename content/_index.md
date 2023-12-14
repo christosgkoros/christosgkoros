@@ -17,4 +17,4 @@ I have a passion for APIs, API-first and API design.
 ## Contact
 
 I am currently living in Athens, Greece, but am available to participate remotely in projects anywhere in the world.
-If you’re interested, check out my social media links. You can also [book a call with me](https://topmate.io/christos_gkoros).
+If you’re interested, check out my social media links or [send me an email](mailto:contact@christosgkoros.com). You can also [book a call with me](https://topmate.io/christos_gkoros).
