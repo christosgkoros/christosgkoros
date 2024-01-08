@@ -1,5 +1,5 @@
 +++
-title = 'Software perspectives'
+title = 'Orthogonality in API design'
 date = 2024-01-08T09:30:03+03:00
 tags = ['quotes','api','api-design', 'orthogonality']
 +++
