@@ -1,7 +1,10 @@
++++
+title = 'Change stakeholders' 
+date = 2024-01-09T09:30:03+03:00 
+tags = ['quotes','leading-change']
++++
 
-+++ title = 'Change stakeholders' = 2024-01-09T09:30:03+03:00 tags = ['quotes','leading-change'] +++
-
-Who’ questions can be things like:
+'Who' questions to ask when leading change:
 
 The included: Who else could be or needs to be included in what I’m doing?
 
