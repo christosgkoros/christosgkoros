@@ -1,3 +1,6 @@
+
++++ title = 'Change stakeholders' = 2024-01-09T09:30:03+03:00 tags = ['quotes','leading-change'] +++
+
 Who’ questions can be things like:
 
 The included: Who else could be or needs to be included in what I’m doing?
