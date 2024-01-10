@@ -4,4 +4,4 @@ menu:
   main:
     weight: 2
 ---
-Interesting quotes I stumble on
+Interesting thoughts and quotes I stumble on
