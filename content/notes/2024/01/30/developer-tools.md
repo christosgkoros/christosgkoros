@@ -5,4 +5,6 @@ tags = ['quotes','developer-tools']
 +++
 
 The core conflict of developer tools is Abstraction vs. complexity
-Jean Young @ https://future.com/the-case-for-developer-experience/
+
+Jean Young
+https://future.com/the-case-for-developer-experience/
