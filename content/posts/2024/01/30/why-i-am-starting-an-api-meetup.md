@@ -13,7 +13,7 @@ I was always intrigued by APIs. Initially, I enjoyed building them. APIs of all 
 
 ## To the business behind them
 
-I fell in love with APIs when I recognized their business significance. Giants like AWS, Twilio, and Stripe have leveraged APIs to build robust, scalable businesses. But it's not just about these big names. APIs take the responsibility to connect different areas of our life. They are used by everyone in our increasingly digital life, often without noticing. Whether adding a concert ticket to a digital wallet or redeeming a loyalty coupon at your local café, APIs are there. For decades (nearly as long as the software practice itself), industries such as banking and telecommunications have relied extensively on APIs to manage and navigate the evolution of their IT systems.  And make our lives easier as a result.
+I fell in love with APIs when I recognized their business significance. Giants like AWS, Twilio, and Stripe have leveraged APIs to build robust, scalable businesses. But it's not just about these big names. APIs take the responsibility to connect different areas of our life. They are used by everyone in our increasingly digital life, often without noticing. Whether adding a concert ticket to a digital wallet or redeeming a loyalty coupon at your local café, APIs are there. For decades (nearly as long as the software practice itself), industries such as banking and telecommunications have relied extensively on APIs to manage and navigate the evolution of their IT systems. And make our lives easier as a result.
 
 ## And what it takes
 
