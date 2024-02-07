@@ -4,13 +4,15 @@ title: "christos gkoros"
 description: "software engineer; architect; API guy;"
 
 ---
-Welcome to my space for sharing things I work with, learn or find interesting
+Welcome to my space for sharing things I work with, learn or find interesting.
+
+Get notified of new content by copying https://christosgkoros.com/index.xml to your RSS feed reader.
 
 ## About me
 
 I am a software engineer and architect who specializes in APIs.
 
-I have more than 13+ experience creating software in various industries and technologies, always with a focus on quality. Currently, I am working as an API Architect at Postman, guiding engineering teams to create high-quality APIs and a better product for the millions of developers using Postman.
+I have more than 14 years of experience creating software in various industries and technologies, always with a focus on quality. Currently, I am working as an API Architect at Postman, guiding engineering teams to create high-quality APIs and a better product for the millions of developers using Postman.
 
 Both mentor and mentee, I am committed to sharing knowledge in the tech community. I am also the organizer of the [API Athens meetup](https://www.meetup.com/API-Athens/).
 
