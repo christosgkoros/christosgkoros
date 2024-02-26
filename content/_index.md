@@ -6,8 +6,6 @@ description: "software engineer; architect; API guy;"
 ---
 Welcome to my space for sharing things I work with, learn or find interesting.
 
-Get notified of new content by copying https://christosgkoros.com/index.xml to your RSS feed reader.
-
 ## About me
 
 I am a software engineer and architect who specializes in APIs.
