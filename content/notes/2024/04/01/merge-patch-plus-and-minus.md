@@ -1,7 +1,7 @@
 +++
 title = 'JSON merge patch plus and minus'
 date = 2024-04-01T13:33:30+03:00
-tags = []
+tags = ["apis","api-design"]
 description =  ""
 +++
 
