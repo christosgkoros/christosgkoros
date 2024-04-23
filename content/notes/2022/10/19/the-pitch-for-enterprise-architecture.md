@@ -1,6 +1,6 @@
 +++
 title = 'The Pitch for Enterprise Architecture'
-date = 2024-04-23T08:28:11+03:00
+date = 2022-10-19T08:28:11+03:00
 tags = ["enterprise architecture", "digital transformation"]
 description =  ""
 +++
