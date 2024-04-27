@@ -1,4 +1,9 @@
-+++ title = 'Observability' date = 2024-04-27T09:30:21+03:00 tags = ["observability", "devops"] description = "" +++
++++
+title = 'Observability'
+date = 2024-04-27T09:30:21+03:00
+tags = ["observability", "devops"]
+description = ""
++++
 
 Observability without action is just storage
 
