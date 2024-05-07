@@ -1,6 +1,6 @@
 +++ 
-title = "idempotency"
-date = "2024-05-07T18:08:16.323Z"
+title = "Idempotency"
+date = "2024-05-07T18:09:03.119Z"
 tags = [ "apis","api-design" ]
 draft = "true"
 +++
