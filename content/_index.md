@@ -4,7 +4,9 @@ title: "christos gkoros"
 description: "software engineer; architect; API guy;"
 
 ---
-Welcome to my space for sharing things I work with, learn or find interesting.
+Welcome to my space for sharing things I work with, learn or find interesting. 
+
+If you'd like to be notified when I post new material, subscribe to my [RSS feed](https://christosgkoros.com/index.xml).
 
 ## About me
 
