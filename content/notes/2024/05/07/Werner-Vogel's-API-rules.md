@@ -2,7 +2,7 @@
 title = "Werner Vogel's API rules"
 date = "2024-05-07T17:52:54.961Z"
 tags = [ "APIs","api-design","architecture" ]
-draft = "true"
+draft = "false"
 +++
 1. APIs are Forever
 When a social media post graces the internet, it leaves a permanent impression on web users thereafter — that’s to say, it remains visible and “on the record” until the end of days. A similar thing happens with AWS’ APIs, though those outcomes are more intentional.
