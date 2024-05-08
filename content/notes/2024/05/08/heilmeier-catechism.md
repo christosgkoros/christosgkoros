@@ -13,4 +13,3 @@
 6. How much will it cost?
 7. How long will it take?
 8. What are the mid-term and final "exams" to check for success?
-  
