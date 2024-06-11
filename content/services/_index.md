@@ -1,6 +1,7 @@
 ---
 title: "services"
 description: "offered by me and my close-knit team"
+draft: "true"
 menu:
   main:
     weight: 10
