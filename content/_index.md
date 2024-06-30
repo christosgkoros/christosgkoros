@@ -1,18 +1,18 @@
 ---
 title: "christos gkoros"
 
-description: "software engineer; architect; API guy;"
+description: "product;engineering;APIs;"
 
 ---
-Welcome to my space for sharing things I work with, learn or find interesting. 
+Welcome to my space for sharing things I work with, learn or find interesting.
 
 If you'd like to be notified when I post new material, subscribe to my [RSS feed](https://christosgkoros.com/index.xml).
 
 ## About me
 
-I am a software engineer and architect who specializes in APIs.
+I am a seasoned engineering and product professional who specializes in APIs: API Design, Developer Experience, API Product Management, API Governance, and API Platforms.
 
-I have more than 14 years of experience creating software in various industries and technologies, always with a focus on quality. Currently, I am working as an API Architect at Postman, guiding engineering teams to create high-quality APIs and a better product for the millions of developers using Postman.
+ With over 14 years of experience, I have developed solutions for diverse industries using various technologies, always emphasizing quality. Currently, I am focusing on API design at Postman, where I lead engineering teams in crafting high-quality APIs to enhance the product experience for the millions of developers who use Postman.
 
 Both mentor and mentee, I am committed to sharing knowledge in the tech community. I am also the organizer of the [API Athens meetup](https://www.meetup.com/API-Athens/).
 
