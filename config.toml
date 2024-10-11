@@ -38,7 +38,7 @@ url = "https://fosstodon.org/@cgkoros"
 rel= "me noopener"
 [[params.ananke_socials]]
 name = "twitter"
-url = "https://twitter.com/christos_gkoros"
+url = "https://twitter.com/christosgkoros"
 share = false
 [[params.ananke_socials]]
 name = "postman"
