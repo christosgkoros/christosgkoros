@@ -1,46 +1,44 @@
 ---
 title: "services"
-description: "offered by me and my close-knit team"
-draft: "true"
+description: ""
 menu:
   main:
     weight: 10
 
 show_reading_time: false
 ---
+I am passionate about what I do and can help your organization succeed in its API initiatives by offering tailored services, drawing from my experience and expertise.
 
-## API Product Management
+[Contact](mailto:christos@christosgkoros.com)
 
-*Audience*: Product, Engineering
+# Onsite Training Workshops
 
-*Goal*: Enable businesses to create new or enhance existing business models through revenue-generating API products that are public-facing.
+Enhance your team’s API design skills and elevate your organization’s overall API design maturity. These workshops are tailored to provide hands-on training and actionable insights.
 
-* API Strategy Development: Training on defining API goals, aligning them with business objectives, and developing strategies for effective API product lifecycle management.
-* User-Centric Design: Focus on designing APIs with the end-user in mind to improve usability and adoption.
-* API Roadmapping: Creating and managing a roadmap that aligns API releases with business requirements and customer needs.
-* API Monetization Techniques: Educating on different models for monetizing APIs, such as direct charging, freemium models, or indirect revenue streams.
-* Analytics and Performance Metrics: Understanding key API metrics to track performance, usage patterns, and overall impact on business goals.
+## API Design: The tree
 
-## Enterprise API Management
+Focus on designing a single API with best practices and a consumer-first mindset.
 
-Audience: Engineering Leadership, Architects
+#### Compact (4 hours)
 
-Goal: For enterprises with multiple teams and distributed systems, improve cross-team collaboration, accelerate delivery, and embed security and compliance early in the API development lifecycle.
+* Includes examples of well-designed and poorly-designed APIs.
+* Focus on practical tips.
 
-* API Governance: Establishing policies for API development and usage that align with organizational standards and regulatory requirements.
-* Shift-left Security : Implementing robust security gateways and include secure-by-design in your API design and development.
-* Lifecycle Management: Detailed processes for managing the API lifecycle from planning, design, and implementation to testing, deployment, and retirement.
-* Platform Engineering for APIs: Create platform teams that support other teams to create the right APIs faster and better.
-* Scaling APIs: Strategies for scaling APIs to handle increased load and ensure performance stability across large user bases.
+#### Extensive (8 hours)
 
-## Postman Foundation to Expert
+* In-depth training on methodologies for creating consumer-centric APIs.
+* Focus on building a top-notch API Design practice.
 
-Audience: Engineering, QA, Operations
+## API Design: The Forest
 
-Goal: Fully leverage Postman as an essential tool in the development, testing, and operation of APIs, enhancing API quality and operational efficiency.
+Learn to manage the design of APIs across the entire organization to ensure consistency, a seamless developer experience, and avoidance of duplication.
 
-* Getting Started with Postman: An introduction to Postman, including basic setup, configuration, and understanding the interface.
-* Building and Managing Collections: How to create collections of requests, manage them effectively, and share them with team members.
-* Advanced Requests and Responses: Deep dive into crafting complex requests, managing various response types, and utilizing scripts for automated testing.
-* Automation and Testing: Using Postman for automation, including writing tests with JavaScript, running collections, and generating reports.
-* CI/CD Integration: Integrating Postman with CI/CD pipelines to ensure API performance and reliability through continuous testing and deployment.
+#### Compact (4 hours)
+
+* Exploration of key design guidelines, both well-known and lesser-known.
+* Overview of strategies for maintaining API consistency.
+
+#### Extensive (8 hours)
+
+* Step-by-step methodology to develop custom API Design Guidelines.
+* Align design principles with business and technical goals.

@@ -19,4 +19,4 @@ Both mentor and mentee, I am committed to sharing knowledge in the tech communit
 ## Contact
 
 I am currently living in Athens, Greece, but am available to participate remotely in projects anywhere in the world.
-If you’re interested, check out my social media links, [send me an email](mailto:contact@christosgkoros.com) or [book a call](https://topmate.io/christos_gkoros).
+If you’re interested, [let's chat](https://calendly.com/christos-gkoros/30min).

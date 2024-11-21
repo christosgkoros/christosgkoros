@@ -45,3 +45,7 @@ name = "postman"
 label = "postman"
 url = "https://www.postman.com/gkorosc"
 color = "#ff6800"
+[[params.ananke_socials]]
+name = "rss"
+label = "rss"
+url = "/index.xml"
