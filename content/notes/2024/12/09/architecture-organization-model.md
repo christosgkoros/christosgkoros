@@ -6,6 +6,6 @@
 +++
 Architecture organizing model
 
-[Doing Architecture](https://architectelevator.com/assets/img/doing_architecture_small.png)
+![Doing Architecture](https://architectelevator.com/assets/img/doing_architecture_small.png)
   
 https://architectelevator.com/architecture/organizing-architecture/
