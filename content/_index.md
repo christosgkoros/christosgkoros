@@ -1,6 +1,6 @@
 ---
 title: "christos gkoros"
 
-description: "product;engineering;APIs;agents;"
+description: "product; engineering; APIs; agents;"
 
 ---
