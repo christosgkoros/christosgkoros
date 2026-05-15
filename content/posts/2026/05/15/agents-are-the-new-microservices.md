@@ -1,6 +1,6 @@
 +++
 title = 'Agents Are the New Microservices'
-date = 2026-05-15T10:00:00+03:00
+date = 2026-05-15T08:00:00+03:00
 tags = ['agents', 'ai', 'architecture', 'microservices']
 description = "... and not because of the hype"
 +++
