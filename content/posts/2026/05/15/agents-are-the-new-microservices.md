@@ -5,6 +5,8 @@ tags = ['agents', 'ai', 'architecture', 'microservices']
 description = "... and not because of the hype"
 +++
 
+![Blue line patterns layered over a fractured white sculpture](/posts/2026/05/15/agents-are-the-new-microservices.jpg)
+
 ## 1. Single responsibility works best
 
 People tend to model agents on people: a *product owner* agent, an *engineer* agent, a *QA* agent. That fails for the same reason *UserService* failed. A role is not a scope. It is a bundle of unrelated jobs that share a title.
