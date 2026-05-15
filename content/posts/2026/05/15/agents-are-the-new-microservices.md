@@ -7,11 +7,11 @@ description = "... and not because of the hype"
 
 ## 1. Single responsibility works best
 
-People tend to model agents on people: a `product owner` agent, an `engineer` agent, a `QA` agent. That fails for the same reason `UserService` failed. A role is not a scope. It is a bundle of unrelated jobs that share a title.
+People tend to model agents on people: a *product owner* agent, an *engineer* agent, a *QA* agent. That fails for the same reason *UserService* failed. A role is not a scope. It is a bundle of unrelated jobs that share a title.
 
-Single-task agents hold up better. A `backlog grooming` agent. A `release notes` agent. A `migration risk review` agent. One job you can describe in a sentence, with a small tool surface and a clear output.
+Single-task agents hold up better. A *backlog grooming* agent. A *release notes* agent. A *migration risk review* agent. One job you can describe in a sentence, with a small tool surface and a clear output.
 
-The microservices parallel is not the noun-shaped service. It is the behavior-shaped one: `place-order`, `calculate-tax`, `issue-refund`. All the logic for one operation behind one boundary, small enough to fit in one person's head.
+The microservices parallel is not the noun-shaped service. It is the behavior-shaped one: *place-order*, *calculate-tax*, *issue-refund*. All the logic for one operation behind one boundary, small enough to fit in one person's head.
 
 ## 2. But it is not free
 
@@ -19,7 +19,7 @@ Every split multiplies what you have to manage. Two agents means two prompts to 
 
 Microservices taught the same lesson. Each new service was another pipeline, dashboard, alert, runbook, on-call surface — the marginal cost almost always underestimated.
 
-The strongest argument for splitting is evaluation. A broad `engineer` agent is hard to judge because almost any output can be defended. A `migration risk review` agent can be tested against known diffs, risks, and misses.
+The strongest argument for splitting is evaluation. A broad *engineer* agent is hard to judge because almost any output can be defended. A *migration risk review* agent can be tested against known diffs, risks, and misses.
 
 Small agents are easier to evaluate. That does not make them free. It makes the trade-off clearer.
 
