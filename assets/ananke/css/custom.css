@@ -1,0 +1,48 @@
+/* Reference-list entries.
+   Scoped to pages with `rule_anchors = true`; the h3.rule class is emitted by
+   layouts/_default/_markup/render-heading.html, so ordinary h3 headings in
+   other posts keep the theme's default styling. */
+
+article h3.rule {
+  position: relative;
+  color: #2d3748;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-top: 1.6rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+article h3.rule + p {
+  margin-top: 0;
+}
+
+/* The "#" sits in the left margin so it never reflows the heading text.
+   Hidden until the entry is hovered or the link takes keyboard focus. */
+.rule-anchor {
+  position: absolute;
+  left: -1.15em;
+  color: #ff6800;
+  font-weight: 400;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.12s ease-in-out;
+}
+
+h3.rule:hover .rule-anchor,
+.rule-anchor:focus {
+  opacity: 1;
+}
+
+/* On narrow screens there is no left margin to sit in, so inline it instead. */
+@media screen and (max-width: 60em) {
+  .rule-anchor {
+    position: static;
+    margin-right: 0.35em;
+  }
+}
+
+/* Keep an anchored entry clear of the top edge when jumped to. */
+article h3.rule:target {
+  scroll-margin-top: 1.5rem;
+}

@@ -1,0 +1,13 @@
+{{- /*
+  Heading render hook.
+
+  Default behaviour matches Hugo's built-in rendering, so existing posts are
+  untouched. Pages that set `rule_anchors = true` in front matter get a
+  linkable "#" marker on their level-3 headings, used by the breaking-changes
+  reference list where every entry is meant to be citable on its own.
+*/ -}}
+{{- if and .Page.Params.rule_anchors (eq .Level 3) -}}
+<h3 id="{{ .Anchor }}" class="rule"><a class="rule-anchor" href="#{{ .Anchor }}" aria-label="Link to this entry">#</a>{{ .Text | safeHTML }}</h3>
+{{- else -}}
+<h{{ .Level }} id="{{ .Anchor }}">{{ .Text | safeHTML }}</h{{ .Level }}>
+{{- end -}}

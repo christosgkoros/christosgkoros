@@ -24,6 +24,7 @@ enableRobotsTXT = true
   background_color_class = "bg-black"
   recent_posts_number = 3
   featured_image = "/img/og-default.png"
+  custom_css = ["custom.css"]
 
 
 [sitemap]
