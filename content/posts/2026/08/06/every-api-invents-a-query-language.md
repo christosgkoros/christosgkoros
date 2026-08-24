@@ -21,7 +21,7 @@ The problem is not that they differ. It is what they *are*. Each one was born in
 
 Elastic gets closest, because the Query DSL is JSON rather than a string. But it is Elasticsearch's query language — bound to its mappings, analyzers and scoring. It is not a component you can drop into your own API and expect to mean anything.
 
-## The generic ones exist. They still do not help.
+## The generic ones exist. They still do not help
 
 This is the part I expected to end differently when I started looking.
 
