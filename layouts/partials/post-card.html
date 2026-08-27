@@ -64,7 +64,7 @@
 <article class="post-card bg-white pa4 mb4">
   {{- if $showSection }}
     {{- with .CurrentSection }}
-      <a href="{{ .RelPermalink }}" class="link f7 ttu tracked silver hover-mid-gray db mb2">{{ .Title }}</a>
+      <a href="{{ .RelPermalink }}" class="link f7 ttu tracked card-meta hover-mid-gray db mb2">{{ .Title }}</a>
     {{- end }}
   {{- end }}
 
@@ -73,7 +73,7 @@
     <a href="{{ .RelPermalink }}" class="link near-black dim">{{ .Title }}</a>
   </h2>
 
-  <p class="f7 silver mt0 mb3">
+  <p class="f7 card-meta mt0 mb3">
     {{- if not .Date.IsZero -}}
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
     {{- end -}}
@@ -86,7 +86,7 @@
     <div class="f5 lh-copy mid-gray nested-links">{{ . }}</div>
   {{- else }}
     {{- with $source }}
-      <p class="f6 lh-copy silver mv0">A link to {{ . }}</p>
+      <p class="f6 lh-copy card-meta mv0">A link to {{ . }}</p>
     {{- end }}
   {{- end }}
 

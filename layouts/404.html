@@ -31,11 +31,11 @@
     {{ $recent := first 5 (sort (union (where .Site.RegularPages "Section" "posts") (where .Site.RegularPages "Section" "notes")) "Date" "desc") }}
     {{ with $recent }}
       <h2 class="f4 fw4 dark-gray mb3">Most recent</h2>
-      <ul class="list pa0 ma0">
+      <ul class="list pa0 ma0 page-404-recent">
         {{ range . }}
           <li class="mb3">
             <a href="{{ .RelPermalink }}" class="link dark-gray dim f5">{{ .Title }}</a>
-            <time class="f6 silver ml2" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            <time class="f6 ml2 page-404-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
           </li>
         {{ end }}
       </ul>

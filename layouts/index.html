@@ -57,13 +57,13 @@
     {{ $recent := first 8 (sort (union $posts $notes) "Date" "desc") }}
 
     {{ with $recent }}
-      <section class="home-stream">
+      <section class="stream">
         <h2 class="stream-head">Recent</h2>
         {{ range . }}
           {{ partial "stream-entry.html" . }}
         {{ end }}
 
-        <p class="home-more">
+        <p class="stream-more">
           {{ with $.Site.GetPage "section" "posts" }}<a href="{{ .RelPermalink }}">All posts</a>{{ end }}
           {{ with $.Site.GetPage "section" "notes" }}<a href="{{ .RelPermalink }}">All notes</a>{{ end }}
           {{ with $.Site.GetPage "/tags" }}<a href="{{ .RelPermalink }}">Browse tags</a>{{ end }}

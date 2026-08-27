@@ -18,13 +18,13 @@
   <div class="flex flex-wrap justify-between">
     <div class="w-100 w-50-ns pr3-ns mb3 mb0-ns">
       {{- with $prev }}
-        <span class="db f7 ttu tracked silver mb1">Older</span>
+        <span class="db f7 ttu tracked prev-next-label mb1">Older</span>
         <a href="{{ .RelPermalink }}" class="link f5 lh-title dark-gray dim db">{{ .Title }}</a>
       {{- end }}
     </div>
     <div class="w-100 w-50-ns pl3-ns tr-ns">
       {{- with $next }}
-        <span class="db f7 ttu tracked silver mb1">Newer</span>
+        <span class="db f7 ttu tracked prev-next-label mb1">Newer</span>
         <a href="{{ .RelPermalink }}" class="link f5 lh-title dark-gray dim db">{{ .Title }}</a>
       {{- end }}
     </div>

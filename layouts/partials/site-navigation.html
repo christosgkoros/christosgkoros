@@ -6,15 +6,19 @@
          The wordmark stays deliberately blank on the homepage — the hero title
          directly below already says the name, so rendering it here would repeat
          it twice within one screen. */}}
-    <a href="{{ .Site.Home.RelPermalink }}" class="f3 fw4 hover-white no-underline white-90 dib">
-      {{ with .Site.Params.site_logo }}
-        <img src="{{ relURL . }}" class="w100 mw5-ns" alt="{{ $.Site.Title }}" />
-      {{ else }}
-        {{ if ne .RelPermalink "/" }}
+    {{/* The whole anchor is conditional, not just its contents. Rendering an
+         empty <a> on the homepage left a focusable link with no accessible
+         name — an invisible tab stop that a screen reader announces as just
+         "link". */}}
+    {{ if or .Site.Params.site_logo (ne .RelPermalink "/") }}
+      <a href="{{ .Site.Home.RelPermalink }}" class="f3 fw4 hover-white no-underline white-90 dib">
+        {{ with .Site.Params.site_logo }}
+          <img src="{{ relURL . }}" class="w100 mw5-ns" alt="{{ $.Site.Title }}" />
+        {{ else }}
           {{ .Site.Title }}
         {{ end }}
-      {{ end }}
-    </a>
+      </a>
+    {{ end }}
     <div class="flex-l items-center">
       {{ partial "i18nlist.html" . }}
       {{ if .Site.Menus.main }}

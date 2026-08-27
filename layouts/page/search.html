@@ -15,7 +15,7 @@
       <input id="search-input" name="q" type="search" autocomplete="off" autofocus
              placeholder="e.g. idempotency, strategy, MCP"
              class="input-reset ba b--black-20 pa3 db w-100 f4 br2" />
-      <p id="search-status" class="f6 silver mt2 mb0" role="status" aria-live="polite"></p>
+      <p id="search-status" class="f6 card-meta mt2 mb0" role="status" aria-live="polite"></p>
     </form>
 
     <ol id="search-results" class="list pa0 mt4"></ol>
@@ -86,9 +86,9 @@
       list.innerHTML = hits.slice(0, 40).map(function (h) {
         var it = h[1];
         return '<li class="mb4">'
-          + '<span class="db f7 ttu tracked silver mb1">' + escapeHtml(it.s) + '</span>'
+          + '<span class="db f7 ttu tracked card-meta mb1">' + escapeHtml(it.s) + '</span>'
           + '<a class="link f4 fw6 athelas near-black dim db" href="' + it.u + '">' + escapeHtml(it.t) + '</a>'
-          + '<span class="db f7 silver mt1">' + escapeHtml(it.d) + '</span>'
+          + '<span class="db f7 card-meta mt1">' + escapeHtml(it.d) + '</span>'
           + '</li>';
       }).join('');
     }

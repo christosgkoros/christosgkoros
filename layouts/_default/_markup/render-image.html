@@ -20,8 +20,33 @@
 {{- $isRemote := strings.HasPrefix $dest "http" -}}
 
 {{- $res := "" -}}
-{{- if not $isRemote -}}
+{{- if $isRemote -}}
+  {{- /* Two notes illustrate a point with an image on someone else's server.
+         Hotlinked, those were the only images on the site with no width or
+         height (so they shifted the layout on load), no WebP and no srcset —
+         and they break if the other site moves or blocks the file.
+
+         Fetch at build time so they are processed like any local image. Errors
+         are swallowed: an unreachable host falls through to the plain remote
+         <img> below rather than failing the build. */ -}}
+  {{- $remote := resources.GetRemote $dest -}}
+  {{- with $remote -}}
+    {{- with .Err -}}
+      {{- warnf "render-image: could not fetch %s: %s" $dest . -}}
+    {{- else -}}
+      {{- $res = $remote -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
   {{- $res = resources.Get (strings.TrimPrefix "/" $dest) -}}
+{{- end -}}
+
+{{- /* Only raster images survive Resize; SVG and anything else passes through
+       to the plain <img> below. */ -}}
+{{- with $res -}}
+  {{- if or (ne .MediaType.MainType "image") (eq .MediaType.SubType "svg") -}}
+    {{- $res = "" -}}
+  {{- end -}}
 {{- end -}}
 
 {{- $n := 1 -}}

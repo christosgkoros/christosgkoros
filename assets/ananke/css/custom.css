@@ -28,7 +28,7 @@ article h3.rule + p {
   /* rem, not em: an em offset scaled with the heading's own font-size and
      pushed the marker outside the article's padding box. */
   left: -1rem;
-  color: #ff6800;
+  color: #c24e00;
   font-weight: 400;
   text-decoration: none;
   opacity: 0;
@@ -138,7 +138,7 @@ article h3.rule:target {
 .toc a:hover,
 .toc a:focus {
   color: #000;
-  border-left-color: #ff6800;
+  border-left-color: #c24e00;
   background: rgba(0, 0, 0, 0.03);
 }
 
@@ -154,7 +154,7 @@ article h3.rule:target {
 .toc-sublist a {
   padding-left: 0.9rem;
   font-size: 0.8125rem;
-  color: #666;
+  color: #5a5a5a;
 }
 
 /* The site ships no JavaScript beyond analytics, so there is no scroll-spy.
@@ -184,7 +184,7 @@ article h3:target {
 .skip-link:focus {
   left: 0.5rem;
   top: 0.5rem;
-  outline: 3px solid #ff6800;
+  outline: 3px solid #c24e00;
 }
 
 /* Suppress the focus ring on <main> itself; tabindex="-1" is only there so the
@@ -255,7 +255,7 @@ main:focus {
 .related a:hover,
 .related a:focus {
   color: #000;
-  border-left-color: #ff6800;
+  border-left-color: #c24e00;
   background: rgba(0, 0, 0, 0.03);
 }
 
@@ -319,7 +319,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 [tabindex]:focus-visible {
-  outline: 3px solid #ff6800;
+  outline: 3px solid #c24e00;
   outline-offset: 2px;
   border-radius: 1px;
 }
@@ -327,13 +327,13 @@ input:focus-visible,
 /* On the black header the orange ring needs a light halo to stay legible. */
 header a:focus-visible,
 footer a:focus-visible {
-  outline-color: #ff6800;
+  outline-color: #c24e00;
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.35);
 }
 
 /* Override the theme's near-invisible dotted ring. */
 .link:focus-visible {
-  outline: 3px solid #ff6800;
+  outline: 3px solid #c24e00;
 }
 
 
@@ -476,7 +476,7 @@ body {
 }
 
 .site-topbar .ananke-socials a {
-  color: rgba(0, 0, 0, 0.32);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .site-topbar .ananke-socials a:hover,
@@ -514,7 +514,7 @@ body {
 
 .home-role {
   font-size: 0.9375rem;
-  color: #8a8a8a;
+  color: #5a5a5a;
   margin: 0 0 1.75rem;
 }
 
@@ -539,7 +539,7 @@ body {
 
 .home-intro a:hover,
 .home-intro a:focus {
-  border-bottom-color: #ff6800;
+  border-bottom-color: #c24e00;
 }
 
 .home-cta {
@@ -554,16 +554,16 @@ body {
 
 .home-cta-primary {
   color: #111;
-  border-bottom: 2px solid #ff6800;
+  border-bottom: 2px solid #c24e00;
 }
 
 .home-cta-quiet {
-  color: #666;
+  color: #5a5a5a;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .home-cta-sep {
-  color: #ccc;
+  color: #8a8a8a;
   margin: 0 0.75rem;
 }
 
@@ -578,7 +578,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-weight: 600;
-  color: #999;
+  color: #6e6e6e;
   margin: 0 0 0.5rem;
 }
 
@@ -594,7 +594,7 @@ body {
 
 .stream-date {
   font-size: 0.75rem;
-  color: #aaa;
+  color: #6e6e6e;
 }
 
 .stream-title {
@@ -606,15 +606,15 @@ body {
 
 .stream-entry:hover .stream-title,
 .stream-entry:focus .stream-title {
-  color: #ff6800;
+  color: #c24e00;
 }
 
 .stream-kind {
   font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #bbb;
+  color: #6e6e6e;
   margin-left: 0.5rem;
   white-space: nowrap;
 }
@@ -623,7 +623,7 @@ body {
   grid-column: 2;
   font-size: 0.9375rem;
   line-height: 1.55;
-  color: #666;
+  color: #5a5a5a;
   margin-top: 0.3rem;
 }
 
@@ -649,7 +649,7 @@ body {
 }
 
 .stream-more a {
-  color: #666;
+  color: #5a5a5a;
   text-decoration: none;
   margin-right: 1.25rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -658,7 +658,7 @@ body {
 .stream-more a:hover,
 .stream-more a:focus {
   color: #111;
-  border-bottom-color: #ff6800;
+  border-bottom-color: #c24e00;
 }
 
 /* The theme puts `mr1` on every social link including the last, leaving the
@@ -707,18 +707,18 @@ body {
 
 .page-desc {
   font-size: 0.9375rem;
-  color: #8a8a8a;
+  color: #5a5a5a;
   margin: 0;
 }
 
 .page-meta {
   font-size: 0.8125rem;
-  color: #999;
+  color: #6e6e6e;
   margin: 0 0 0.5rem;
 }
 
 .page-meta a {
-  color: #666;
+  color: #5a5a5a;
   text-decoration: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
@@ -753,7 +753,7 @@ body {
 .pagination .page-link {
   display: block;
   padding: 0.4rem 0.7rem;
-  color: #666;
+  color: #5a5a5a;
   text-decoration: none;
   background: none;
   border: 1px solid transparent;
@@ -766,13 +766,13 @@ body {
 }
 
 .pagination .page-item.disabled .page-link {
-  color: #ccc;
+  color: #8a8a8a;
 }
 
 .pagination a[href]:hover,
 .pagination a[href]:focus {
   color: #111;
-  border-color: #ff6800;
+  border-color: #c24e00;
 }
 
 /* ── Footer (site-footer.html) ───────────────────────────────────────────── */
@@ -785,12 +785,12 @@ body {
 
 .site-footer-copy {
   font-size: 0.8125rem;
-  color: #999;
+  color: #6e6e6e;
   margin: 0;
 }
 
 .site-footer .ananke-socials a {
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .site-footer .ananke-socials a:hover,
@@ -829,4 +829,137 @@ main.pb7 {
   max-width: 64rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+
+/* ── Target sizes ────────────────────────────────────────────────────────────
+   WCAG 2.5.8 wants 24x24 CSS px. Its exception covers links inline in a
+   sentence, whose height is set by the surrounding line-height — so prose
+   links and the "all tags" link in a meta sentence are fine as they are.
+
+   Standalone controls are not covered by that exception, and these were all
+   19-23px tall. */
+
+/* Nav items were 20px. Padding rather than line-height so the text keeps its
+   position and only the hit area grows. */
+.site-topbar nav ul a {
+  display: inline-block;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+/* Homepage call-to-action pair: 23px and 22px. */
+.home-cta a {
+  display: inline-block;
+  padding-top: 0.3rem;
+  padding-bottom: 0.35rem;
+}
+
+/* The "most recent" recovery list on the 404 page, and the footer link row
+   under the stream — both are lists of standalone links, not prose. */
+.stream-more a,
+.page-404-recent a {
+  display: inline-block;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Previous/next are standalone navigation links, not prose: they were 20px,
+   and the "All posts" link under them 16px. */
+.prev-next a {
+  display: inline-block;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+
+/* ── Links inside post content ───────────────────────────────────────────────
+   The theme sets `.nested-links a { color: #357edd }`. That is 3.92:1 on the
+   page ground — under AA — and it outranked the `.dark-gray` / `.black`
+   utilities the templates actually asked for, so every link in a post body,
+   every tag pill and both previous/next links rendered in Tachyons blue
+   regardless of their markup. Its hover state is worse: #96ccff, 1.7:1.
+
+   Same treatment as the homepage intro: near-black with a hairline underline
+   that turns accent on hover. */
+
+.post-body a,
+.page-intro a {
+  color: #111;
+}
+
+.post-body a:hover,
+.post-body a:focus,
+.page-intro a:hover,
+.page-intro a:focus {
+  color: #c24e00;
+}
+
+.post-body p a,
+.post-body blockquote a,
+.post-body ol a,
+.page-intro a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.28);
+}
+
+.post-body p a:hover,
+.post-body p a:focus,
+.page-intro a:hover,
+.page-intro a:focus {
+  border-bottom-color: #c24e00;
+}
+
+/* The "#" marker sits inside `.nested-links`, so it needs the same override. */
+.post-body a.rule-anchor {
+  color: #c24e00;
+  border-bottom: 0;
+}
+
+
+/* ── Tag pills (layouts/partials/tags.html) ──────────────────────────────── */
+
+.tag-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 2.5rem 0 0;
+}
+
+.post-body .tag-list a {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.875rem;
+  color: #3a3a3a;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 999px;
+}
+
+.post-body .tag-list a:hover,
+.post-body .tag-list a:focus {
+  color: #111;
+  border-color: #c24e00;
+}
+
+
+/* ── Remaining Tachyons `silver` (#999, 2.75:1) in our own markup ────────── */
+
+.prev-next-label,
+.page-404-date {
+  color: #6e6e6e;
+}
+
+/* Decorative separator between the two homepage links; darkened so it clears
+   AA rather than relying on the "pure decoration" exemption. */
+.home-cta-sep {
+  color: #6e6e6e;
+}
+
+/* Card eyebrow and date line: Tachyons `silver` is #999 (2.75:1). */
+.card-meta {
+  color: #6e6e6e;
 }

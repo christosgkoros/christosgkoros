@@ -1,0 +1,15 @@
+{{/*
+  Tag pills under a post.
+
+  Overrides the theme partial, whose `.black` class lost to `.nested-links a`
+  (equal class count, but the theme rule also matches the element) — so the
+  pills rendered in Tachyons blue at 3.92:1 rather than the near-black they
+  asked for.
+*/}}
+{{ with .GetTerms "tags" }}
+  <ul class="tag-list">
+    {{ range . }}
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+    {{ end }}
+  </ul>
+{{ end }}
