@@ -1,13 +1,17 @@
 <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
-    <a href="{{ .Site.Home.RelPermalink }}" class="f3 fw2 hover-white no-underline white-90 dib">
+    {{/* Weight is `fw4`, not the theme's `fw2` (200): thin weights work at the
+         80px display size in the hero, but at 24px white-on-black they halate.
+
+         The wordmark stays deliberately blank on the homepage — the hero title
+         directly below already says the name, so rendering it here would repeat
+         it twice within one screen. */}}
+    <a href="{{ .Site.Home.RelPermalink }}" class="f3 fw4 hover-white no-underline white-90 dib">
       {{ with .Site.Params.site_logo }}
         <img src="{{ relURL . }}" class="w100 mw5-ns" alt="{{ $.Site.Title }}" />
       {{ else }}
-        {{if ne .RelPermalink "/" }}
+        {{ if ne .RelPermalink "/" }}
           {{ .Site.Title }}
-        {{else}}
-          
         {{ end }}
       {{ end }}
     </a>
@@ -15,18 +19,30 @@
       {{ partial "i18nlist.html" . }}
       {{ if .Site.Menus.main }}
         <ul class="{{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+          {{/* The "services" special-case that used to live here is gone:
+               the page is now excluded at the source (no `menu` entry in its
+               front matter) instead of being put in the menu and then filtered
+               back out of the only thing that renders the menu. */}}
           {{ range .Site.Menus.main }}
-            {{ if ne .Page.Type "services" }}
-              <li class="list f5 f4-ns fw4 dib {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
-                <a class="hover-white no-underline white-90" href="{{ .URL }}" title="{{ i18n "pageTitle" . }}">
-                  {{ .Name }}
-                </a>
-              </li>
-            {{ end }}
+            <li class="list f5 f4-ns fw4 dib {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+              <a class="hover-white no-underline white-90" href="{{ .URL }}" title="{{ i18n "pageTitle" . }}">
+                {{ .Name }}
+              </a>
+            </li>
           {{ end }}
         </ul>
       {{ end }}
-      {{ partialCached "social-follow.html" . }}
+      {{/* Social icons live in the footer only.
+
+           They needed 244px of a 640px header row, which forced the topbar to
+           be wider than the content column and left the orange mark visibly
+           out of line with everything below it. Dropping them here aligns the
+           masthead with the text and also settles an audit finding: six
+           outbound links were the heaviest thing in the header, louder than
+           posts / notes / speaking.
+
+           To put them back, restore `{{ partialCached "social-follow.html" . }}`
+           and widen `.site-topbar-inner` to 52rem in custom.css. */}}
     </div>
   </div>
 </nav>

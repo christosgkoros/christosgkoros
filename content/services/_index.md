@@ -1,21 +1,28 @@
 ---
 title: "services"
-description: ""
-menu:
-  main:
-    weight: 10
+description: "API design training workshops and advisory"
+
+# Deliberately not in the main menu and not indexed. The page stays live so it
+# can be shared directly, but it is no longer a stranded page that search
+# engines surface and no visitor can navigate to.
+#   private = true  -> emits <meta name="robots" content="noindex, nofollow">
+#   _build.list     -> keeps it out of the sitemap and out of site lists
+private: true
+_build:
+  list: never
+  render: always
 
 show_reading_time: false
 ---
 I am passionate about what I do and can help your organization succeed in its API initiatives by offering tailored services, drawing from my experience and expertise.
 
-[Contact](mailto:christos@christosgkoros.com)
+[Contact](mailto:contact@christosgkoros.com)
 
-# Onsite Training Workshops
+## Onsite Training Workshops
 
 Enhance your team’s API design skills and elevate your organization’s overall API design maturity. These workshops are tailored to provide hands-on training and actionable insights.
 
-## API Design: The tree
+### API Design: The tree
 
 Focus on designing a single API with best practices and a consumer-first mindset.
 
@@ -29,7 +36,7 @@ Focus on designing a single API with best practices and a consumer-first mindset
 * In-depth training on methodologies for creating consumer-centric APIs.
 * Focus on building a top-notch API Design practice.
 
-## API Design: The Forest
+### API Design: The Forest
 
 Learn to manage the design of APIs across the entire organization to ensure consistency, a seamless developer experience, and avoidance of duplication.
 

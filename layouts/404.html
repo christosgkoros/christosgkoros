@@ -1,0 +1,44 @@
+{{/* Topbar only, at the reading width: the page prints its own h1,
+     and its content sits in the narrow column, not the wide article one. */}}
+{{ define "header" }}<header>{{ partial "site-topbar.html" (dict "ctx" .) }}</header>{{ end }}
+{{ define "main" }}
+  {{/* The theme's 404 is a single sentence with no way out. Anyone who lands
+       here followed a stale link, so give them the routes they were probably
+       looking for rather than making them go back to the nav. */}}
+  <article class="site-wrap">
+    <h1 class="f2 athelas dark-gray mt0 mb3">This page has moved or never existed</h1>
+    <p class="f4 lh-copy mid-gray mt0 mb4">
+      Nothing lives at that address. If you followed a link from somewhere else,
+      it may be out of date — the writing is all still here.
+    </p>
+
+    <div class="flex flex-wrap mb5">
+      <a href="{{ "/" | relURL }}" class="link db f6 pa2 br3 bg-dark-gray white dim tc mr2 mb2">Home</a>
+      {{ with .Site.GetPage "section" "posts" }}
+        <a href="{{ .RelPermalink }}" class="link db f6 pa2 br3 bg-mid-gray white dim tc mr2 mb2">All posts</a>
+      {{ end }}
+      {{ with .Site.GetPage "section" "notes" }}
+        <a href="{{ .RelPermalink }}" class="link db f6 pa2 br3 bg-mid-gray white dim tc mr2 mb2">All notes</a>
+      {{ end }}
+      {{ with .Site.GetPage "/search" }}
+        <a href="{{ .RelPermalink }}" class="link db f6 pa2 br3 ba b--mid-gray mid-gray dim tc mr2 mb2">Search</a>
+      {{ end }}
+      {{ with .Site.GetPage "/tags" }}
+        <a href="{{ .RelPermalink }}" class="link db f6 pa2 br3 ba b--mid-gray mid-gray dim tc mb2">Browse tags</a>
+      {{ end }}
+    </div>
+
+    {{ $recent := first 5 (sort (union (where .Site.RegularPages "Section" "posts") (where .Site.RegularPages "Section" "notes")) "Date" "desc") }}
+    {{ with $recent }}
+      <h2 class="f4 fw4 dark-gray mb3">Most recent</h2>
+      <ul class="list pa0 ma0">
+        {{ range . }}
+          <li class="mb3">
+            <a href="{{ .RelPermalink }}" class="link dark-gray dim f5">{{ .Title }}</a>
+            <time class="f6 silver ml2" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+  </article>
+{{ end }}

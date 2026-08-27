@@ -1,7 +1,7 @@
 +++
 title = 'The Agent Is a Git Repository'
 date = 2026-08-07T10:00:00+03:00
-tags = ['agents', 'ai', 'automation', 'productivity']
+tags = ['Agents', 'AI', 'Automation', 'Productivity']
 description = "How I build the assistants I hand daily work to — a repo for memory, CLIs and MCP servers for hands, and a log you can read as a diff"
 +++
 

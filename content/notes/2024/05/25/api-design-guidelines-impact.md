@@ -1,8 +1,8 @@
 +++ 
   title = "API Design Guidelines Impact"
   date = "2024-05-25T05:36:17.685Z"
-  tags = [ "apis","api-design","ai","developer-tools" ]
-  draft = "false"
+  tags = [ "APIs","API design","AI","Developer tools" ]
+  draft = false
 +++
 A list of key finding to illustrate the impact of AIP Guidelines in the areas of API consumption and API production:
 

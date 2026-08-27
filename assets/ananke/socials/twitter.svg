@@ -1,0 +1,29 @@
+<!--
+  X, replacing the theme's twitter bird (themes/ananke/assets/ananke/socials/twitter.svg).
+
+  Uses the official X wordmark path verbatim rather than a drawn cross: the real
+  mark is asymmetric and carries a counter where the two strokes cross, which a
+  symmetric multiplication sign does not reproduce.
+
+  Same visual pattern as every other icon in the set — a disc with the glyph
+  knocked out, painted in `currentColor` so it inherits the nav's grey-at-rest /
+  white-on-hover treatment.
+
+  A mask rather than `fill-rule="evenodd"`: the wordmark is authored in a 24x24
+  box and has to be scaled and centred into this 67x67 disc, and a transform
+  cannot be applied to one subpath of a shared path. With the mask, white keeps
+  and black removes — the glyph paints black (removed) and its counter is a hole
+  in that black, so the counter stays part of the disc, as in the real mark.
+
+  Disc geometry is copied from the theme icons (centre 33,34 / r 30) so this
+  aligns optically with linkedin, github, mastodon and rss.
+-->
+<svg viewBox="0 0 67 67" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <mask id="ananke-x-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="67" height="67">
+    <path d="M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" fill="#fff"/>
+    <g transform="translate(33,34) scale(1.5) translate(-12,-12)">
+      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="#000"/>
+    </g>
+  </mask>
+  <rect x="0" y="0" width="67" height="67" fill="currentColor" mask="url(#ananke-x-mask)"/>
+</svg>

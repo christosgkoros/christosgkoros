@@ -1,7 +1,7 @@
 +++
 title = '[Meetup] Kubernetes Athens - Kubernetes Api Highlight Orchestrating a Flow'
 date = 2024-03-13T20:53:11+03:00
-tags = ["speaking", "kubernetes", "apis"]
+tags = ["Speaking", "Kubernetes", "APIs"]
 description =  ""
 +++
 

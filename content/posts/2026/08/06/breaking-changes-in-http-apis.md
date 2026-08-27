@@ -1,7 +1,7 @@
 +++
 title = 'Breaking Changes in HTTP APIs'
 date = 2026-08-06T08:00:00+03:00
-tags = ['apis', 'api-design', 'breaking-changes', 'versioning']
+tags = ['APIs', 'API design', 'Breaking changes', 'Versioning']
 description = "A reference list of the ways an API breaks the clients that already depend on it"
 rule_anchors = true
 +++

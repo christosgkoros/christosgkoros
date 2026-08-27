@@ -1,8 +1,8 @@
 +++ 
   title = "Heilmeier Catechism"
   date = "2024-05-08T14:48:28.171Z"
-  tags = [ "leadership","management","project-management" ]
-  draft = "false"
+  tags = [ "Leadership","Management","Project management" ]
+  draft = false
 +++
 
 1. What are you trying to do? Articulate your objectives using absolutely no jargon.

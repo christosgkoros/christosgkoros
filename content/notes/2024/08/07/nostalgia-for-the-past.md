@@ -1,8 +1,8 @@
 +++ 
   title = "Nostalgia for the past"
   date = "2024-08-07T10:15:40.239Z"
-  tags = [ "psychology" ]
-  draft = "false"
+  tags = [ "Psychology" ]
+  draft = false
 +++
 We tend to say that people were happier in the past because life was simpler. Do you agree with this view?
 

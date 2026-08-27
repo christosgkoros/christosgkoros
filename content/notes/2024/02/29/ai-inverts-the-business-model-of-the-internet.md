@@ -1,7 +1,7 @@
 +++
 title = 'AI Inverts the Business Model of the Internet'
 date = 2024-02-29T15:25:32+02:00
-tags = ["ai","business"]
+tags = ["AI","Business"]
 +++
 
 Last week, Reddit filed their S-1 to go public. At least 10% of their revenue - about $60m - comes from selling data to train Large Language Models.

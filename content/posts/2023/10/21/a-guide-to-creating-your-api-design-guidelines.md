@@ -1,7 +1,7 @@
 +++
 title = 'A guide to creating your API design guidelines'
 date = 2023-10-21T10:06:03+03:00
-tags = ['apis', 'api-design', 'api-design-guidelines', 'api-governance']
+tags = ['APIs', 'API design', 'API design guidelines', 'API governance']
 +++
 
 ![Photo by Javier Allegue Barros on Unsplash](/posts/2023/10/21/a-guide-to-creating-your-api-design-guidelines.jpg "Photo by Javier Allegue Barros on Unsplash")

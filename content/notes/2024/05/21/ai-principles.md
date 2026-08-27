@@ -1,8 +1,8 @@
 +++ 
   title = "AI principles"
   date = "2024-05-21T13:50:49.565Z"
-  tags = [ "ai" ]
-  draft = "false"
+  tags = [ "AI" ]
+  draft = false
 +++
 • Be socially beneficial
 • Avoid creating or reinforcing unfair bias

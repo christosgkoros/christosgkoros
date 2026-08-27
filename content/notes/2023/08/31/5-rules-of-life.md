@@ -1,7 +1,7 @@
 +++
 title = '5 rules of life'
 date = 2023-08-31T05:06:03+03:00
-tags = ['life']
+tags = ['Life']
 +++
 
 1. Always be ready to reinvent yourself. Stay foolish for as long as you can, always in learning mode.

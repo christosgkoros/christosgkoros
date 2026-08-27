@@ -1,0 +1,38 @@
+{{- /*
+  prev-next.html
+
+  Sequential navigation between items in the same section. The site had none:
+  a reader who finished one of 120 pieces had only the "Related" box, with no
+  way to keep moving through the section they were already in.
+
+  `PrevInSection`/`NextInSection` order by date, so "previous" here is the
+  chronologically earlier piece — labelled explicitly rather than relying on
+  arrows alone.
+*/ -}}
+
+{{- $prev := .PrevInSection -}}
+{{- $next := .NextInSection -}}
+
+{{- if or $prev $next -}}
+<nav class="prev-next bt b--black-10 mt5 pt4" aria-label="More in {{ .CurrentSection.Title }}">
+  <div class="flex flex-wrap justify-between">
+    <div class="w-100 w-50-ns pr3-ns mb3 mb0-ns">
+      {{- with $prev }}
+        <span class="db f7 ttu tracked silver mb1">Older</span>
+        <a href="{{ .RelPermalink }}" class="link f5 lh-title dark-gray dim db">{{ .Title }}</a>
+      {{- end }}
+    </div>
+    <div class="w-100 w-50-ns pl3-ns tr-ns">
+      {{- with $next }}
+        <span class="db f7 ttu tracked silver mb1">Newer</span>
+        <a href="{{ .RelPermalink }}" class="link f5 lh-title dark-gray dim db">{{ .Title }}</a>
+      {{- end }}
+    </div>
+  </div>
+  {{- with .CurrentSection }}
+    <p class="mt4 mb0">
+      <a href="{{ .RelPermalink }}" class="link f6 mid-gray hover-near-black">All {{ .Title }}</a>
+    </p>
+  {{- end }}
+</nav>
+{{- end -}}

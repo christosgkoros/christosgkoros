@@ -1,8 +1,10 @@
 +++ 
-  title = "Thoughts on MCP Code Mode "
+  title = "Thoughts on MCP Code Mode"
   date = "2026-02-24T11:23:31.736Z"
   tags = [ "Cloudflare","MCP","APIs" ]
-  draft = "false"
+  draft = false
+  slug = "thoughts-on-mcp-code-mode"
+  aliases = ["/notes/2026/02/24/thoughts-on-mcp-code-mode-/"]
 +++
 Thoughs on Cloudflare's MCP Code Mode announcement https://blog.cloudflare.com/code-mode-mcp/
 

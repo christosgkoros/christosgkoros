@@ -1,7 +1,7 @@
 +++
 title = 'Nemawashi'
 date = 2024-04-27T18:48:25+03:00
-tags = ["architecture", "leading change"]
+tags = ["Architecture", "Leading change"]
 description =  ""
 +++
 

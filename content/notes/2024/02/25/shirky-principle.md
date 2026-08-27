@@ -1,7 +1,7 @@
 +++
 title = 'Shirky Principle'
 date = 2024-02-25T08:30:14+02:00
-tags = ['quotes']
+tags = ['Quotes']
 description =  ""
 +++
 

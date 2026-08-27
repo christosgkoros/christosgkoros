@@ -1,7 +1,7 @@
 +++
 title = 'Mentoring and coaching'
 date = 2023-11-04T14:02:03+03:00
-tags = ['management']
+tags = ['Management']
 +++
 
 You might step into a mentoring mode when you are sharing your experiences, offering advice and knowledge. If you're a leader in tech, you likely overindex on mentoring because it's easy. Because you're proud of your expertise and you want to share and help.

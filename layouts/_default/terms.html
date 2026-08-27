@@ -1,0 +1,69 @@
+{{ define "main" }}
+  {{/*
+    A tag index, not a content dump.
+
+    The theme's terms.html rendered every post's full summary under every one of
+    the ~150 tags: 352 KB, 304 <h1> elements and 737 links on a single page,
+    with each post repeated once per tag it carried, and no way to see the list
+    of tags this page is named after.
+
+    This lists the tags themselves — most used first, then A–Z with counts.
+  */}}
+
+  {{ $terms := .Data.Terms.Alphabetical }}
+  {{ $byCount := .Data.Terms.ByCount }}
+
+  <article class="site-wrap">
+    {{ with .Content }}
+      <div class="f4 lh-copy nested-copy-line-height nested-links {{ $.Param "text_color" | default "mid-gray" }} mb4">
+        {{ . }}
+      </div>
+    {{ end }}
+
+    <p class="f6 mid-gray mt0 mb4">
+      {{ len $terms }} tags across {{ len (where .Site.RegularPages "Section" "in" (slice "posts" "notes" "speaking")) }} posts, notes and talks.
+    </p>
+
+    {{/* ── Most used ── an entry point that beats scanning 150 alphabetised
+         items when you have no specific tag in mind. */}}
+    {{ with first 15 $byCount }}
+      <section class="mb5">
+        <h2 class="f4 fw4 dark-gray mb3">Most used</h2>
+        <div class="flex flex-wrap">
+          {{ range . }}
+            <a href="{{ .Page.RelPermalink }}"
+               class="link dib f6 br2 ph3 pv2 mr2 mb2 bg-dark-gray white hover-bg-mid-gray">
+              {{ .Page.LinkTitle }}
+              <span class="o-60 ml1">{{ .Count }}</span>
+            </a>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+
+    {{/* ── A–Z ── grouped by initial so the list is navigable by eye. */}}
+    <section>
+      <h2 class="f4 fw4 dark-gray mb3">All tags</h2>
+      {{ $letter := "" }}
+      {{ range $terms }}
+        {{ $initial := upper (substr .Page.LinkTitle 0 1) }}
+        {{ if ne $initial $letter }}
+          {{ if ne $letter "" }}
+            </div>
+          {{ end }}
+          {{ $letter = $initial }}
+          <h3 class="f5 fw6 mid-gray bb b--black-10 pb1 mb2 mt4">{{ $initial }}</h3>
+          <div class="flex flex-wrap mb2">
+        {{ end }}
+        <a href="{{ .Page.RelPermalink }}"
+           class="link dib f6 br2 ph2 pv1 mr2 mb2 dark-gray ba b--black-10 bg-white hover-bg-light-gray">
+          {{ .Page.LinkTitle }}
+          <span class="o-50 ml1">{{ .Count }}</span>
+        </a>
+      {{ end }}
+      {{ if ne $letter "" }}
+        </div>
+      {{ end }}
+    </section>
+  </article>
+{{ end }}

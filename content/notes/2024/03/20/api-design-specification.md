@@ -1,7 +1,7 @@
 +++
 title = 'Api Design Specification'
 date = 2024-03-20T10:20:10+02:00
-tags = ["apis", "api-design", "api-design-specification"]
+tags = ["APIs", "API design", "API design specification"]
 description =  "What is an API design specification?"
 +++
 

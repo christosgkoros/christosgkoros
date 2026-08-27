@@ -6,11 +6,15 @@
 article h3.rule {
   position: relative;
   color: #2d3748;
-  font-size: 1.0625rem;
+  /* Was 1.0625rem (17px), which rendered these entry titles *smaller* than the
+     1.25rem body copy beneath them and inverted the hierarchy. These headings
+     are the scannable index of the document, so they need to outrank the
+     prose. */
+  font-size: 1.375rem;
   font-weight: 700;
-  margin-top: 1.6rem;
-  margin-bottom: 0.25rem;
-  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
 }
 
 article h3.rule + p {
@@ -21,7 +25,9 @@ article h3.rule + p {
    Hidden until the entry is hovered or the link takes keyboard focus. */
 .rule-anchor {
   position: absolute;
-  left: -1.15em;
+  /* rem, not em: an em offset scaled with the heading's own font-size and
+     pushed the marker outside the article's padding box. */
+  left: -1rem;
   color: #ff6800;
   font-weight: 400;
   text-decoration: none;
@@ -45,4 +51,782 @@ h3.rule:hover .rule-anchor,
 /* Keep an anchored entry clear of the top edge when jumped to. */
 article h3.rule:target {
   scroll-margin-top: 1.5rem;
+}
+
+
+/* ── Table of contents (layouts/partials/toc.html) ──────────────────────────
+   Lives in the right rail of long posts, which was previously empty for the
+   entire scroll below the "Related" box. Sticky so it stays reachable through
+   a document of any length, and scrollable so a long reference list does not
+   run off the viewport. */
+
+/* ── Post layout ─────────────────────────────────────────────────────────────
+   The rail holds the contents and the Related box, and sits to the right of the
+   article on wide screens. Narrow screens need those two split up: contents
+   above the article (useful), Related below it (correct).
+
+   `display: contents` on the rail dissolves the wrapper below 60em, promoting
+   both children to flex items of the article so they can be ordered
+   independently. Above 60em the rail becomes a block again and the two stack
+   inside it, which is what lets the contents stay sticky. */
+
+.post-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-rail {
+  display: contents;
+}
+
+.post-header       { order: 1; }
+.post-layout .toc  { order: 2; }
+.post-body         { order: 3; }
+.post-layout .related { order: 4; }
+
+@media screen and (min-width: 60em) {
+  .post-layout {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .post-rail { display: block; }
+
+  /* Ordering is a narrow-screen concern only; DOM order is already correct. */
+  .post-header,
+  .post-body,
+  .post-layout .toc,
+  .post-layout .related { order: 0; }
+}
+
+.toc {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Narrow screens: a compact scrollable box rather than 95 links of page between
+   the title and the first paragraph. */
+@media screen and (max-width: 59.99em) {
+  .toc {
+    max-height: 40vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .toc {
+    position: sticky;
+    top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+.toc a {
+  color: #555;
+  text-decoration: none;
+  display: block;
+  /* Padding rather than margin so the whole row is a comfortable hit area. */
+  padding: 0.3rem 0.25rem;
+  border-left: 2px solid transparent;
+}
+
+.toc a:hover,
+.toc a:focus {
+  color: #000;
+  border-left-color: #ff6800;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.toc-list > li > a {
+  font-weight: 600;
+  color: #333;
+}
+
+.toc-l2 + .toc-l2 {
+  margin-top: 0.15rem;
+}
+
+.toc-sublist a {
+  padding-left: 0.9rem;
+  font-size: 0.8125rem;
+  color: #666;
+}
+
+/* The site ships no JavaScript beyond analytics, so there is no scroll-spy.
+   `:target` gives the equivalent feedback once an entry has been jumped to. */
+.toc a:target,
+article h2:target,
+article h3:target {
+  scroll-margin-top: 1.5rem;
+}
+
+
+/* ── Skip link ───────────────────────────────────────────────────────────────
+   Off-screen until focused, so it costs sighted users nothing. */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  color: #000;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+  outline: 3px solid #ff6800;
+}
+
+/* Suppress the focus ring on <main> itself; tabindex="-1" is only there so the
+   skip link can move focus into it. */
+main:focus {
+  outline: none;
+}
+
+
+/* ── Heading anchors ────────────────────────────────────────────────────────
+   Was an 11px-wide target, invisible until hover — so unusable on touch,
+   where hover does not exist. */
+
+.rule-anchor {
+  /* Padding, not width: keeps the glyph optically in the margin while giving
+     the link a target that meets the 24x24 minimum. */
+  padding: 0.35rem 0.5rem;
+  margin: -0.35rem -0.5rem;
+}
+
+@media (hover: none) {
+  .rule-anchor {
+    opacity: 0.45;
+  }
+}
+
+
+/* ── Cards (layouts/partials/post-card.html) ────────────────────────────────
+   A hairline instead of the theme's shadowless white block, so cards read as
+   discrete items on the near-white page background. */
+
+.post-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+}
+
+.post-card-more {
+  /* Meets the 24x24 minimum target size; the theme's "read more" pill was
+     75x24 with a 12px label. */
+  padding: 0.4rem 0;
+  text-decoration: none;
+}
+
+.post-card-more:hover,
+.post-card-more:focus {
+  text-decoration: underline;
+}
+
+
+/* ── Related box (layouts/partials/menu-contextual.html) ────────────────────
+   Was Tachyons blue with an underline — the only unstyled-looking element on
+   a post page. */
+
+.related-item + .related-item {
+  margin-top: 0.15rem;
+}
+
+.related a {
+  display: block;
+  padding: 0.3rem 0.25rem;
+  color: #555;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+}
+
+.related a:hover,
+.related a:focus {
+  color: #000;
+  border-left-color: #ff6800;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+
+/* ── Previous / next (layouts/partials/prev-next.html) ──────────────────── */
+
+.prev-next a {
+  text-decoration: none;
+}
+
+.prev-next a:hover,
+.prev-next a:focus {
+  text-decoration: underline;
+}
+
+
+/* ── Navigation social icons ─────────────────────────────────────────────────
+   Two problems in the theme's _social-icons.css:
+
+   1. 32px icons next to 20px nav text meant six outbound links were the
+      heaviest thing in the header — louder than posts / notes / speaking.
+   2. `:hover` moves the colour from #BABABA to rgb(107,114,128), i.e. it gets
+      *darker* on a black bar, so hovering makes an icon harder to see. */
+
+.ananke-socials a .icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ananke-socials a {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ananke-socials a:hover,
+.ananke-socials a:focus {
+  color: #fff;
+}
+
+
+/* ── Autolinked bare URLs (render-link.html) ─────────────────────────────── */
+
+.bare-link {
+  word-break: normal;
+}
+
+.bare-link-arrow {
+  font-size: 0.85em;
+  opacity: 0.6;
+}
+
+
+/* ── Focus visibility ────────────────────────────────────────────────────────
+   Tachyons gives `.link:focus` a 1px dotted ring in the link's own colour,
+   which is close to invisible on a #555 link over #f4f4f4 — and the nav links
+   carry no `.link` class at all, so their only focus feedback was
+   `.hover-white:focus` nudging white from 0.9 to 1.0 opacity.
+
+   `:focus-visible` means pointer users never see this. */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #ff6800;
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+/* On the black header the orange ring needs a light halo to stay legible. */
+header a:focus-visible,
+footer a:focus-visible {
+  outline-color: #ff6800;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.35);
+}
+
+/* Override the theme's near-invisible dotted ring. */
+.link:focus-visible {
+  outline: 3px solid #ff6800;
+}
+
+
+/* ── Card grid (list.html, taxonomy.html) ────────────────────────────────────
+   Cards stretch to a common height per row (the grid default).
+
+   The theme's original flex row also stretched, but it stretched a *wrapper*
+   that carried its own `bg-white` while the card inside stayed its natural
+   height — so a short note rendered as a card followed by a block of empty
+   white. Here `.post-card` is the grid item itself, so stretching fills its
+   own background and border and the row simply lines up. */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+@media screen and (min-width: 40em) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* The card supplies its own spacing inside the grid. */
+.card-grid .post-card {
+  margin-bottom: 0;
+}
+
+/* Column layout so a stretched card can pin "Continue reading" to its bottom
+   edge rather than leaving it floating mid-card above the extra height. */
+.post-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-grid .post-card-more {
+  margin-top: auto;
+  /* `margin-top: auto` absorbs the free space, overriding the mt3 utility, so
+     restore a minimum gap for cards that are already the tallest in their row. */
+  padding-top: 1rem;
+}
+
+
+/* ── Image aspect ratio ──────────────────────────────────────────────────────
+   render-image.html now emits intrinsic `width`/`height` so the browser can
+   reserve space and avoid layout shift. The theme's CSS sets `img{width:100%}`
+   but never `height:auto`, so that height attribute became the *used* height
+   and stretched every hero (a 1280x720 image rendered 629x720).
+
+   `height: auto` restores the aspect ratio while keeping the attributes doing
+   their job. */
+
+img {
+  height: auto;
+}
+
+
+/* Postman hovers to its own brand orange rather than white. The icon paints
+   with `currentColor`, so setting the link colour is all that is needed — the
+   disc picks it up and the knocked-out rocket stays transparent.
+   #FF6C37 is Postman's orange, taken from the original brand artwork; the
+   site's own accent is the slightly different #ff6800. */
+.ananke-socials a.postman:hover,
+.ananke-socials a.postman:focus {
+  color: #ff6c37;
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   Homepage — "quiet" direction (layouts/index.html)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* Page ground. #f4f4f4 against pure #000 bands was the harshest available
+   pairing; #fbfbfa against #111 keeps the contrast high without the glare.
+
+   `body_classes` in config.toml drops the theme's `bg-near-white`, which would
+   otherwise win on specificity (class beats element selector). */
+body {
+  background: #fbfbfa;
+}
+
+.site-wrap {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Topbar ──────────────────────────────────────────────────────────────── */
+
+.site-topbar {
+  padding-top: 1.5rem;
+}
+
+.site-mark {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #ff6800;
+  flex: 0 0 auto;
+  margin-right: 1.25rem;
+}
+
+/* The shared nav partial is built for a black band. Reuse it and invert here
+   rather than forking the partial — these selectors outrank the Tachyons
+   utilities on the anchors without needing !important. */
+.site-topbar nav {
+  padding: 0;
+  /* Fill the row so the links group lands flush with the content edge rather
+     than trailing the orange mark. */
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* The theme's own `justify-between` is what we want: wordmark left, links
+   right. On the homepage the wordmark renders empty, so the links still sit
+   right with nothing to butt against. An earlier `flex-end` override here was
+   correct for the homepage alone and ran the wordmark into "posts" everywhere
+   else. */
+
+.site-topbar nav a.white-90,
+.site-topbar nav ul a {
+  color: #555;
+}
+
+.site-topbar nav a:hover,
+.site-topbar nav a:focus {
+  color: #111;
+}
+
+.site-topbar nav li {
+  font-size: 0.9375rem;
+}
+
+.site-topbar .ananke-socials a {
+  color: rgba(0, 0, 0, 0.32);
+}
+
+.site-topbar .ananke-socials a:hover,
+.site-topbar .ananke-socials a:focus {
+  color: #111;
+}
+
+.site-topbar .ananke-socials a.postman:hover,
+.site-topbar .ananke-socials a.postman:focus {
+  color: #ff6c37;
+}
+
+/* ── Intro ───────────────────────────────────────────────────────────────── */
+
+.home-hero {
+  padding: 4rem 0 2.5rem;
+}
+
+.home-portrait {
+  display: block;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  margin-bottom: 1.75rem;
+}
+
+.home-name {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: #111;
+  margin: 0 0 0.5rem;
+  line-height: 1.15;
+}
+
+.home-role {
+  font-size: 0.9375rem;
+  color: #8a8a8a;
+  margin: 0 0 1.75rem;
+}
+
+/* Wraps the markdown from content/_index.md, so the type is set on the
+   paragraphs inside rather than on the element itself. */
+.home-intro p {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #3a3a3a;
+  margin: 0 0 1rem;
+}
+
+.home-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.home-intro a {
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.home-intro a:hover,
+.home-intro a:focus {
+  border-bottom-color: #ff6800;
+}
+
+.home-cta {
+  margin: 1.75rem 0 0;
+  font-size: 0.875rem;
+}
+
+.home-cta a {
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+.home-cta-primary {
+  color: #111;
+  border-bottom: 2px solid #ff6800;
+}
+
+.home-cta-quiet {
+  color: #666;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.home-cta-sep {
+  color: #ccc;
+  margin: 0 0.75rem;
+}
+
+/* ── Stream ──────────────────────────────────────────────────────────────── */
+
+.stream {
+  padding: 1rem 0 4rem;
+}
+
+.stream-head {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: #999;
+  margin: 0 0 0.5rem;
+}
+
+.stream-entry {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0 1rem;
+  align-items: baseline;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  text-decoration: none;
+}
+
+.stream-date {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.stream-title {
+  font-family: athelas, Georgia, serif;
+  font-size: 1.1875rem;
+  line-height: 1.3;
+  color: #111;
+}
+
+.stream-entry:hover .stream-title,
+.stream-entry:focus .stream-title {
+  color: #ff6800;
+}
+
+.stream-kind {
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #bbb;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+.stream-summary {
+  grid-column: 2;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+/* One column on narrow screens: a 5.5rem gutter leaves too little for a serif
+   title, and the date reads fine above it. */
+@media screen and (max-width: 34em) {
+  .stream-entry {
+    grid-template-columns: 1fr;
+  }
+
+  .stream-summary {
+    grid-column: 1;
+  }
+
+  .stream-date {
+    margin-bottom: 0.15rem;
+  }
+}
+
+.stream-more {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.stream-more a {
+  color: #666;
+  text-decoration: none;
+  margin-right: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.stream-more a:hover,
+.stream-more a:focus {
+  color: #111;
+  border-bottom-color: #ff6800;
+}
+
+/* The theme puts `mr1` on every social link including the last, leaving the
+   group short of the content edge. */
+.ananke-socials a:last-child {
+  margin-right: 0;
+}
+
+/* The theme's nav switches from flex to block below 60em, so its links and
+   icons stack. Side by side with the mark that leaves the dash jammed against
+   "posts" — stack the whole topbar instead. */
+@media screen and (max-width: 59.99em) {
+  .site-topbar .site-wrap {
+    display: block;
+  }
+
+  .site-mark {
+    margin-bottom: 1rem;
+  }
+
+  .site-topbar nav > div {
+    justify-content: flex-start;
+  }
+}
+
+
+/* ── Page heads (site-header.html) ───────────────────────────────────────────
+   Replaces the dark title band. A section title is now a heading on the page,
+   not a billboard: 485px of black band became ~90px of type. */
+
+.page-head {
+  /* Longhand: the shorthand zeroed `.site-wrap`'s horizontal padding, so the
+     title sat 32px left of the content it heads. */
+  padding-top: 3.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: #111;
+  margin: 0 0 0.4rem;
+}
+
+.page-desc {
+  font-size: 0.9375rem;
+  color: #8a8a8a;
+  margin: 0;
+}
+
+.page-meta {
+  font-size: 0.8125rem;
+  color: #999;
+  margin: 0 0 0.5rem;
+}
+
+.page-meta a {
+  color: #666;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.page-intro {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #3a3a3a;
+  margin-bottom: 2rem;
+}
+
+/* ── Stream on list pages ─────────────────────────────────────────────────── */
+
+.stream {
+  padding: 0 0 2rem;
+}
+
+/* ── Pagination ──────────────────────────────────────────────────────────────
+   The theme's pills were white boxes on a white-ish ground with a 14px label;
+   flattened to plain type in the site's greys. */
+
+.pagination {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0 0 4rem;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.pagination .page-link {
+  display: block;
+  padding: 0.4rem 0.7rem;
+  color: #666;
+  text-decoration: none;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+
+.pagination .page-item.active .page-link {
+  color: #111;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #ccc;
+}
+
+.pagination a[href]:hover,
+.pagination a[href]:focus {
+  color: #111;
+  border-color: #ff6800;
+}
+
+/* ── Footer (site-footer.html) ───────────────────────────────────────────── */
+
+.site-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+  margin-top: 2rem;
+  padding: 1.75rem 0 2.5rem;
+}
+
+.site-footer-copy {
+  font-size: 0.8125rem;
+  color: #999;
+  margin: 0;
+}
+
+.site-footer .ananke-socials a {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.site-footer .ananke-socials a:hover,
+.site-footer .ananke-socials a:focus {
+  color: #111;
+}
+
+.site-footer .ananke-socials a.postman:hover,
+.site-footer .ananke-socials a.postman:focus {
+  color: #ff6c37;
+}
+
+/* `pb7` on <main> was spacing content off a dark footer bar that no longer
+   exists. */
+main.pb7 {
+  padding-bottom: 0;
+}
+
+/* The header carries the wordmark, four nav links and six icons — more than the
+   44rem reading column can hold, where it wrapped onto three lines. Give the
+   topbar its own wider measure and keep the reading column narrow. */
+.site-topbar-inner {
+  max-width: 44rem;
+}
+
+/* The theme's `.pagination li.active a` sets a #ddd fill and outranks the
+   flattened `.page-link` rule above on element count. */
+.pagination .page-item.active .page-link {
+  background: none;
+}
+
+/* Single posts sit in a 64rem article container (`mw8 ph3`) because they carry
+   the contents rail alongside the text. The masthead matches that container on
+   those pages so the mark lines up with the article, not 176px to its right. */
+.site-topbar-wide {
+  max-width: 64rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

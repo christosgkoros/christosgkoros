@@ -1,7 +1,7 @@
 +++
 title = 'Abstracting complexity and empowering developers'
 date = 2023-12-12T14:02:03+03:00
-tags = ['developer-experience']
+tags = ['Developer experience']
 +++
 
 When balancing between abstracting complexity away and empowering developers, I ask:

@@ -1,0 +1,11 @@
+{{/*
+  Header for single posts and notes: topbar only.
+
+  The theme partial rendered either a dark nav strip or, when the page had a
+  featured image, a full-bleed cover with the title over it. Single pages
+  already print their own title inside the article, so a second one above the
+  fold was duplication.
+*/}}
+<header>
+  {{ partial "site-topbar.html" (dict "ctx" . "wide" true) }}
+</header>

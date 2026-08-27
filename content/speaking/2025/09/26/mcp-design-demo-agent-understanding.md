@@ -1,7 +1,7 @@
 +++
 title = '[Demo] MCP Design - Aiding Agents for Better User Experience'
 date = 2025-09-26T00:00:00+03:00
-tags = ["speaking", "mcp", "agents", "ai", "user-experience", "design", "demo"]
+tags = ["Speaking", "MCP", "Agents", "AI", "User experience", "Design", "Demo"]
 description = "Demo showcasing how MCP design can aid agents understand better and make the final user's job much easier and simpler"
 +++
 

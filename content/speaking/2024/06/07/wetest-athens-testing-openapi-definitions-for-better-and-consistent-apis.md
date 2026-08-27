@@ -1,7 +1,7 @@
 +++
 title = '[Conf] Wetest Athens - Testing Openapi Definitions for Better and Consistent Apis'
 date = 2024-06-09T11:08:09+03:00
-tags = ["speaking", "apis", "openapi", "api-design", "api-governance", "platform-engineering", "spectral"]
+tags = ["Speaking", "APIs", "OpenAPI", "API design", "API governance", "Platform engineering", "Spectral"]
 description =  "Presentation at ta the WeTest Athens 2024 tech conference on topics like API Design, scale, platform engineering and tools to address them"
 +++
 

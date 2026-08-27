@@ -1,0 +1,26 @@
+{{/*
+  Overrides the theme partial for two reasons:
+
+  1. Its links inherited the browser/Tachyons default blue (#357EDD) with an
+     underline, so the "Related" box was the one element on a post that looked
+     unstyled next to the site's grey palette.
+  2. Its optional `.TableOfContents` block is superseded by
+     layouts/partials/toc.html, which is rendered separately in single.html.
+*/}}
+
+{{ $related := .Site.RegularPages.Related . | first 8 }}
+
+{{ with $related }}
+  <nav class="related bg-light-gray pa3" aria-labelledby="related-heading">
+    <p class="f5 b mb2 mt0 dark-gray" id="related-heading">{{ i18n "related" }}</p>
+    <ul class="pa0 list ma0">
+      {{ range . }}
+        <li class="related-item">
+          <a href="{{ .RelPermalink }}">
+            {{- .Title -}}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+{{ end }}

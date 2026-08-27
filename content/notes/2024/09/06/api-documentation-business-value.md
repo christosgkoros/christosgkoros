@@ -1,8 +1,8 @@
 +++ 
   title = "APi documentation business value"
   date = "2024-09-06T10:48:33.237Z"
-  tags = [ "api-documentation","business","collaboration" ]
-  draft = "false"
+  tags = [ "API documentation","Business","Collaboration" ]
+  draft = false
 +++
 The angle from which to look at the business value of API documentation is the "platform." When building it, APIs are the core ingredient and the area where different teams interact.
 

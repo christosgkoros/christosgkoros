@@ -1,8 +1,8 @@
 +++ 
   title = "Ownership in Tech"
   date = "2024-05-21T06:24:57.549Z"
-  tags = [ "leadership","management","ownership" ]
-  draft = "false"
+  tags = [ "Leadership","Management","Ownership" ]
+  draft = false
 +++
 In all cases, you should push decisions as far down your org chart as they can go. Consider how much pain and inefficiency you're willing to take, in exchange for people feeling ownership over their goals and mission.
 

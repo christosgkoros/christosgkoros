@@ -1,8 +1,8 @@
 +++ 
   title = "Navigating Ambiguity with Questions"
   date = "2025-07-31T08:51:01.750Z"
-  tags = [ "problem-solving","process","questions","communication" ]
-  draft = "false"
+  tags = [ "Problem solving","Process","Questions","Communication" ]
+  draft = false
 +++
 Here's my process for using questions to navigate ambiguity:
 1. Start with a "question dump"

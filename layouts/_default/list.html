@@ -1,0 +1,22 @@
+{{ define "main" }}
+  {{/*
+    Section list (posts, notes, speaking).
+
+    Was a three-column card grid, which forced a two-line note and a
+    3,000-word reference into the same rectangle and read as a CMS listing.
+    Same stream row as the homepage — see layouts/partials/stream-entry.html.
+  */}}
+  <div class="site-wrap">
+    {{- with .Content }}
+      <div class="page-intro">{{ . }}</div>
+    {{- end }}
+
+    <section class="stream">
+      {{ range .Paginator.Pages }}
+        {{ partial "stream-entry.html" . }}
+      {{ end }}
+    </section>
+
+    {{- template "_internal/pagination.html" . -}}
+  </div>
+{{ end }}

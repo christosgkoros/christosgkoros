@@ -1,8 +1,8 @@
 +++ 
   title = "US Tech Leadership and Culture"
   date = "2025-07-10T05:29:15.082Z"
-  tags = [ "leadership","business-culture","communication" ]
-  draft = "false"
+  tags = [ "Leadership","Business culture","Communication" ]
+  draft = false
 +++
 In the US, being soft-spoken, deferential, and respectful makes you a valued colleague, NOT a leader.
 

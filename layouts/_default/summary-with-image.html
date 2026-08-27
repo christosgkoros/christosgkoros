@@ -1,0 +1,6 @@
+{{/* Kept as a distinct view because layouts/index.html requests it by name,
+     but it renders the same card as `summary` — the theme's image variant
+     placed a 40%-width thumbnail that no post on this site actually populated,
+     since `GetFeaturedImage` reads page-bundle resources and these posts are
+     single files with a sibling image. */}}
+{{ partial "post-card.html" . }}

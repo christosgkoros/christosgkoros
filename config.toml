@@ -9,10 +9,21 @@ googleAnalytics = "G-3J8BX045QR"
 
 enableRobotsTXT = true
 
+# Taxonomy term pages derive their title from the term string. Hugo's default
+# AP title-casing would turn "API design" into "API Design" and "gRPC" into
+# "GRPC"; the tags now carry their intended display form in front matter, so
+# preserve it verbatim.
+titleCaseStyle = "none"
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+# `categories` is unused — no content sets it — but Hugo still generated an
+# empty, orphaned /categories/ page and listed it in the sitemap.
+[taxonomies]
+  tag = "tags"
 
 [params]
   text_color = ""
@@ -21,11 +32,25 @@ enableRobotsTXT = true
   site_logo = ""
   description = "Hi! This is my personal space for sharing things that I work with, learn and find interesting"
   # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
-  background_color_class = "bg-black"
+  background_color_class = "bg-near-black"
+  # Drops the theme's `bg-near-white` (#f4f4f4) so the page ground can be set in
+  # custom.css; a Tachyons class would outrank a `body` element selector.
+  body_classes = "avenir"
   recent_posts_number = 3
-  featured_image = "/img/og-default.png"
+  # Sitewide fallback for og:image / twitter:image, used when a page has no
+  # hero image of its own. Consumed by layouts/partials/social-meta.html.
+  # NOTE: this was previously `featured_image`, which the theme reads only from
+  # page front matter — so it silently resolved to nothing and no page ever
+  # emitted an og:image.
+  og_image = "/img/og-default.png"
+  twitter_handle = "@christosgkoros"
   custom_css = ["custom.css"]
 
+
+# The home page additionally renders as JSON (layouts/index.json), which is the
+# search index consumed by layouts/_default/search.html.
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
 
 [sitemap]
   changefreq = "monthly"
@@ -44,15 +69,18 @@ name = "mastodon"
 url = "https://fosstodon.org/@cgkoros"
 rel= "me noopener"
 [[params.ananke_socials]]
+# Icon overridden to the X mark in assets/ananke/socials/twitter.svg. The
+# service key stays "twitter" because that is what the theme looks up; only the
+# label (used in title/aria-label) and the artwork change.
 name = "twitter"
+label = "X"
 url = "https://x.com/christosgkoros"
 share = false
 [[params.ananke_socials]]
 name = "postman"
-label = "postman"
+label = "Postman"
 url = "https://www.postman.com/gkorosc"
-color = "#ff6800"
 [[params.ananke_socials]]
 name = "rss"
-label = "rss"
+label = "RSS"
 url = "/index.xml"

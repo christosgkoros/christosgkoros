@@ -5,9 +5,18 @@
   untouched. Pages that set `rule_anchors = true` in front matter get a
   linkable "#" marker on their level-3 headings, used by the breaking-changes
   reference list where every entry is meant to be citable on its own.
+
+  Two accessibility fixes over the first version:
+
+  1. The "#" glyph is `aria-hidden`, so it no longer leaks into the heading's
+     accessible name. Previously every heading was announced as
+     "Link to this entry, Removing a path".
+  2. The label names its target instead of being one of 88 identical
+     "Link to this entry" links, which gave a screen-reader user no way to tell
+     them apart out of context.
 */ -}}
 {{- if and .Page.Params.rule_anchors (eq .Level 3) -}}
-<h3 id="{{ .Anchor }}" class="rule"><a class="rule-anchor" href="#{{ .Anchor }}" aria-label="Link to this entry">#</a>{{ .Text | safeHTML }}</h3>
+<h3 id="{{ .Anchor }}" class="rule"><a class="rule-anchor" href="#{{ .Anchor }}" aria-label="Permalink to “{{ .PlainText }}”"><span aria-hidden="true">#</span></a>{{ .Text | safeHTML }}</h3>
 {{- else -}}
 <h{{ .Level }} id="{{ .Anchor }}">{{ .Text | safeHTML }}</h{{ .Level }}>
 {{- end -}}

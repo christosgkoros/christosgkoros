@@ -1,0 +1,27 @@
+{{- /*
+  Link render hook.
+
+  21 of 120 notes end with their source as a bare URL on its own line. Goldmark
+  autolinks those, so they were clickable — but they rendered at full length,
+  wrapping across three lines mid-card and mid-paragraph.
+
+  When the link text is identical to its destination (i.e. it was autolinked
+  rather than written as [text](url)), show the domain instead. The full URL
+  stays in href and in the title attribute, so nothing is hidden.
+
+  Hand-written links are passed through untouched.
+*/ -}}
+
+{{- $dest := .Destination -}}
+{{- $text := .Text -}}
+{{- $isBare := and (eq (trim $text " ") (trim $dest " ")) (strings.HasPrefix $dest "http") -}}
+{{- $external := strings.HasPrefix $dest "http" -}}
+
+{{- if $isBare -}}
+  {{- $domain := replaceRE `^https?://(www\.)?([^/]+).*$` "$2" $dest -}}
+  <a href="{{ $dest | safeURL }}" class="bare-link" title="{{ $dest }}" rel="noopener" target="_blank">{{ $domain }}<span class="bare-link-arrow" aria-hidden="true">&nbsp;&#8599;</span></a>
+{{- else if $external -}}
+  <a href="{{ $dest | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }} rel="noopener">{{ $text | safeHTML }}</a>
+{{- else -}}
+  <a href="{{ $dest | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ $text | safeHTML }}</a>
+{{- end -}}

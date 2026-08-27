@@ -1,7 +1,7 @@
 +++
 title = 'Observability'
 date = 2024-04-27T09:30:21+03:00
-tags = ["observability", "devops"]
+tags = ["Observability", "DevOps"]
 description = ""
 +++
 

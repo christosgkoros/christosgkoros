@@ -1,7 +1,7 @@
 +++
 title = 'OpenAPI to gRPC with Quarkus'
 date = 2022-08-23T10:06:03+03:00
-tags = ['openapi', 'grpc', 'quarkus', 'api-specification-first']
+tags = ['OpenAPI', 'gRPC', 'Quarkus', 'API specification first']
 description = 'How to implement one of your REST services as gRPC'
 +++
 

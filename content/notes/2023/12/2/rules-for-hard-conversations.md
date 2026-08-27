@@ -1,7 +1,7 @@
 +++
 title = 'Rules for hard conversations'
 date = 2023-12-02T14:02:03+03:00
-tags = ['management']
+tags = ['Management']
 +++
 
 Get your emotions under control

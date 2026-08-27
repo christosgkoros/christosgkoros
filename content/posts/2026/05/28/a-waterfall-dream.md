@@ -1,7 +1,7 @@
 +++
 title = 'A waterfall dream'
 date = 2026-05-28T08:00:00+03:00
-tags = ['ai', 'product', 'engineering', 'teams']
+tags = ['AI', 'Product', 'Engineering', 'Teams']
 description = "Simpler shape, clearer roles, AI in the seams"
 +++
 

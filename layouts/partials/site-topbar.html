@@ -1,0 +1,30 @@
+{{- /*
+  site-topbar.html
+
+  The single header used across the site: a thin light strip with the orange
+  rule as the only mark, then the nav.
+
+  Replaces the theme's dark title band. That band put ~390px of near-empty black
+  above every page — on a 1440x900 laptop, more than half the first screen spent
+  on one lowercase word — and it was the main reason the site read as a
+  configured theme rather than a personal site.
+
+  Page titles now live in `site-header.html` as ordinary type on the page
+  ground, so a title is a heading rather than a billboard.
+
+  Call with a dict:
+    {{ partial "site-topbar.html" (dict "ctx" . "wide" true) }}
+
+  `wide` matches the 64rem article container on single posts, which is wider
+  than the 44rem reading column because it also carries the table-of-contents
+  rail. Without it the masthead would sit 176px right of the article text.
+*/ -}}
+{{- $ctx := .ctx -}}
+{{- $wide := .wide | default false -}}
+<div class="site-topbar">
+  <div class="site-wrap site-topbar-inner{{ if $wide }} site-topbar-wide{{ end }} flex justify-between items-center">
+    {{/* Decorative: the wordmark in the nav is already the home link. */}}
+    <span class="site-mark" aria-hidden="true"></span>
+    {{ partial "site-navigation.html" $ctx }}
+  </div>
+</div>

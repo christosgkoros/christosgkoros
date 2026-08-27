@@ -1,7 +1,7 @@
 +++
 title = '7 Steps to Review an Api Design'
 date = 2023-10-27T10:06:03+03:00
-tags = ['apis', 'api-design', 'api-design-review', 'api-governance']
+tags = ['APIs', 'API design', 'API design review', 'API governance']
 +++
 
 ![Photo by Edho Pratama on Unsplash](/posts/2023/10/27/7-steps-to-review-an-api-design.jpg "Photo by Edho Pratamaash on Unsplash")

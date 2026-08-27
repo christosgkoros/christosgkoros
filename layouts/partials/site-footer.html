@@ -1,8 +1,20 @@
-<footer class="{{ .Site.Params.background_color_class | default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 pv2 ph3" href="{{ .Site.Home.Permalink }}" >
-    &copy; {{ with .Site.Copyright | default .Site.Title }} {{ . | safeHTML }} {{ now.Format "2006"}} {{ end }}
-  </a>
-    <div>{{ partial "social-follow.html" . }}</div>
+{{/*
+  Footer.
+
+  Was a full-bleed dark bar with a 20px copyright link and the social icons —
+  the heaviest element on the page, and jarring under the light layout. Now a
+  hairline rule and small muted type on the same ground as the content.
+
+  Takes the same `wide` flag as site-topbar.html so it lines up with the
+  article container on single posts and with the reading column everywhere else.
+*/}}
+{{- $ctx := .ctx -}}
+{{- $wide := .wide | default false -}}
+<footer class="site-footer" role="contentinfo">
+  <div class="site-wrap{{ if $wide }} site-topbar-wide{{ end }} flex flex-wrap justify-between items-center">
+    <p class="site-footer-copy">
+      &copy; {{ with $ctx.Site.Copyright | default $ctx.Site.Title }}{{ . | safeHTML }} {{ now.Format "2006" }}{{ end }}
+    </p>
+    {{ partial "social-follow.html" $ctx }}
   </div>
 </footer>

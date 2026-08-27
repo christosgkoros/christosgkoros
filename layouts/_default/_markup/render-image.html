@@ -1,0 +1,71 @@
+{{- /*
+  Image render hook.
+
+  Post heroes were 1600px-wide JPEGs of 150–345 KB, served at their full size
+  into a 629 CSS-px column, with no width/height (so guaranteed layout shift),
+  no srcset and no lazy loading. The 2022 posts used WebP at 20–64 KB, so the
+  workflow had regressed rather than never existed.
+
+  The images now live under assets/ (mirroring their old content/ paths), which
+  is the only place `resources.Get` can reach, so Hugo can resize and re-encode
+  them. Markdown is untouched: the destinations in the source are still
+  `/posts/<date>/<slug>.jpg`.
+
+  The first image on a page is the hero and the likely LCP element, so it loads
+  eagerly at high priority; everything after it is lazy.
+*/ -}}
+
+{{- $dest := .Destination -}}
+{{- $alt := .PlainText | default .Title -}}
+{{- $isRemote := strings.HasPrefix $dest "http" -}}
+
+{{- $res := "" -}}
+{{- if not $isRemote -}}
+  {{- $res = resources.Get (strings.TrimPrefix "/" $dest) -}}
+{{- end -}}
+
+{{- $n := 1 -}}
+{{- with .Page -}}
+  {{- $n = add 1 (int (.Scratch.Get "renderImageCount" | default 0)) -}}
+  {{- .Scratch.Set "renderImageCount" $n -}}
+{{- end -}}
+{{- $loading := cond (eq $n 1) "eager" "lazy" -}}
+
+{{- if $res -}}
+  {{- /* Cap at 1280px: the column is 629 CSS px, so 1280 covers 2x displays
+         with nothing to spare. Skip upscaling anything already smaller. */ -}}
+  {{- $max := 1280 -}}
+  {{- $base := $res -}}
+  {{- if gt $res.Width $max -}}
+    {{- $base = $res.Resize (printf "%dx webp q82" $max) -}}
+  {{- else -}}
+    {{- $base = $res.Resize (printf "%dx webp q82" $res.Width) -}}
+  {{- end -}}
+
+  {{- $widths := slice 640 960 1280 -}}
+  {{- $srcset := slice -}}
+  {{- range $widths -}}
+    {{- if le . $base.Width -}}
+      {{- $v := $base.Resize (printf "%dx webp q82" .) -}}
+      {{- $srcset = $srcset | append (printf "%s %dw" $v.RelPermalink $v.Width) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $srcset -}}
+    {{- $srcset = slice (printf "%s %dw" $base.RelPermalink $base.Width) -}}
+  {{- end -}}
+
+  <img src="{{ $base.RelPermalink }}"
+       srcset="{{ delimit $srcset ", " }}"
+       sizes="(min-width: 60em) 640px, 100vw"
+       width="{{ $base.Width }}" height="{{ $base.Height }}"
+       alt="{{ $alt }}"
+       {{ with .Title }}title="{{ . }}"{{ end }}
+       loading="{{ $loading }}" decoding="async"
+       {{ if eq $n 1 }}fetchpriority="high"{{ end }} />
+{{- else -}}
+  {{- /* Remote images, or anything not found in assets/ — still get the
+         attributes that prevent layout shift being made worse. */ -}}
+  <img src="{{ $dest | safeURL }}" alt="{{ $alt }}"
+       {{ with .Title }}title="{{ . }}"{{ end }}
+       loading="{{ $loading }}" decoding="async" />
+{{- end -}}

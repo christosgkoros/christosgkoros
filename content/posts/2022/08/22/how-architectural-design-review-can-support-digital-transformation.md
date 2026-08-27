@@ -1,7 +1,7 @@
 +++
 title = 'How architectural design review can support digital transformation'
 date = 2022-08-22T10:06:03+03:00
-tags = ['digital-transformation', 'adr', 'architecture-design-review', 'agile']
+tags = ['Digital transformation', 'ADR', 'Architecture design review', 'Agile']
 +++
 
 ![Photo by John Schnobrich on Unsplash](/posts/2022/08/22/how-architecture-design-review-can-support-digital-transformation.webp "Photo by John Schnobrich on Unsplash")

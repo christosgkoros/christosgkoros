@@ -1,8 +1,8 @@
 +++ 
   title = "Simplicity principle"
   date = "2025-02-03T19:39:11.844Z"
-  tags = [ "api-design" ]
-  draft = "false"
+  tags = [ "API design" ]
+  draft = false
 +++
 The API design should be simple and easy to understand
 

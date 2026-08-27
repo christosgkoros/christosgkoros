@@ -1,8 +1,8 @@
 +++ 
   title = "Architecture Organization Model"
   date = "2024-12-09T07:31:51.411Z"
-  tags = [ "architecture","teams" ]
-  draft = "false"
+  tags = [ "Architecture","Teams" ]
+  draft = false
 +++
 Architecture organizing model
 

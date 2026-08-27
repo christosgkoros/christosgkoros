@@ -1,8 +1,8 @@
 +++ 
   title = "Key Skills for Software Engineers"
   date = "2025-07-07T08:07:30.744Z"
-  tags = [ "software-engineering","problem-solving","skills","security" ]
-  draft = "false"
+  tags = [ "Software engineering","Problem solving","Skills","Security" ]
+  draft = false
 +++
 Using natural language (or diagrams) to describe how to break down and precisely solve a novel problem (scalably and securely) is not easy and never will be easy.
 

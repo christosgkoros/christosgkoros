@@ -1,0 +1,16 @@
+# Overrides for themes/ananke/i18n/en.toml. Only the keys listed here change;
+# Hugo merges the rest from the theme.
+
+# Was "{{ .Count }} minutes read", which reads as broken English next to the
+# date ("August 6, 2026 - 15 minutes read").
+[readingTime]
+one = "1 min read"
+other = "{{ .Count }} min read"
+
+[wordCount]
+one = "1 word"
+other = "{{ .Count }} words"
+
+# Was "Below you will find pages that utilize the taxonomy term “x”".
+[taxonomyPageList]
+other = "Everything tagged “{{ .Title }}”"

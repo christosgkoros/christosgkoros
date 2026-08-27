@@ -1,7 +1,7 @@
 +++
 title = 'Why I Am Starting An Api Meetup'
 date = 2024-01-31T12:10:13+02:00
-tags = ['apis', 'meetup', 'community']
+tags = ['APIs', 'Meetup', 'Community']
 description = "In this article, I am laying out the reasons for starting a meetup about APIs, highlighting their transformative power in business and the digital world."
 +++
 

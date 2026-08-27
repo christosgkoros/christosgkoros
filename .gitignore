@@ -1,2 +1,11 @@
 .DS_Store
 /public
+
+# Hugo's image-processing cache: 85 derivatives, ~3.2 MB of WebP and JPEG
+# regenerated from the originals in assets/posts/ on every build. Committing
+# them would add binary churn on each content change for no benefit, since the
+# sources are tracked and Netlify rebuilds from them.
+#
+# The CSS entries under resources/_gen/assets/ stay tracked — they are small,
+# text, and already in history.
+/resources/_gen/images/

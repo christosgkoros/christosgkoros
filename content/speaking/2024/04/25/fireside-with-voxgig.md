@@ -1,7 +1,7 @@
 +++
 title = '[Podcast] Fireside With Voxgig'
 date = 2024-04-25T21:02:59+03:00
-tags = ["speaking", "apis", "software", "meetups", "devrel"]
+tags = ["Speaking", "APIs", "Software", "Meetups", "DevRel"]
 description =  ""
 +++
 

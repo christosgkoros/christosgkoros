@@ -1,7 +1,7 @@
 +++
 title = 'Orthogonality in API design'
 date = 2024-01-08T09:30:03+03:00
-tags = ['apis', 'api-design', 'orthogonality']
+tags = ['APIs', 'API design', 'Orthogonality']
 +++
 
 

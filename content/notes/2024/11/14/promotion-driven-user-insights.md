@@ -1,8 +1,8 @@
 +++ 
   title = "Promotion-Driven User Insights"
   date = "2024-11-14T10:59:41.886Z"
-  tags = [ "sales","user-research","product" ]
-  draft = "false"
+  tags = [ "Sales","User research","Product" ]
+  draft = false
 +++
 My favorite question to ask about any user/buyer is, "How does this person get their next promotion?
   

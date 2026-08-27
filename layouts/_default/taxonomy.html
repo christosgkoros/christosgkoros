@@ -1,0 +1,15 @@
+{{ define "main" }}
+  {{/* Single tag page — same stream as the section lists. */}}
+  <div class="site-wrap">
+    <p class="page-meta">
+      {{ len .Pages }} {{ cond (eq (len .Pages) 1) "item" "items" }}
+      {{ with .Site.GetPage "/tags" }}· <a href="{{ .RelPermalink }}">all tags</a>{{ end }}
+    </p>
+
+    <section class="stream">
+      {{ range .Pages }}
+        {{ partial "stream-entry.html" . }}
+      {{ end }}
+    </section>
+  </div>
+{{ end }}

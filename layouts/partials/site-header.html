@@ -1,0 +1,16 @@
+{{/*
+  Header for list, taxonomy and standalone pages.
+
+  Overrides the theme partial, which rendered a full-bleed dark band with the
+  page title at 80px. The topbar is now light and the title sits on the page
+  ground as ordinary type — see site-topbar.html for why.
+*/}}
+<header>
+  {{ partial "site-topbar.html" (dict "ctx" .) }}
+  {{ if not .Params.omit_header_text }}
+    <div class="site-wrap page-head">
+      <h1 class="page-title">{{ .Title | default .Site.Title }}</h1>
+      {{ with .Params.description }}<p class="page-desc">{{ . }}</p>{{ end }}
+    </div>
+  {{ end }}
+</header>

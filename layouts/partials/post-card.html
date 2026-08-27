@@ -1,0 +1,101 @@
+{{- /*
+  post-card.html
+
+  One card renderer shared by `summary.html` and `summary-with-image.html`, so
+  the homepage, section lists and tag pages all present an item the same way.
+
+  Replaces the theme's version, which:
+    * showed no date, on a site whose content spans 2022–2026
+    * wrapped every item title in <h1>, giving 11 h1 elements on /notes/ and
+      304 on the old /tags/
+    * emitted a "read more" pill on every card — a third link to a destination
+      the title already links to, with link text repeated ten times a page, in
+      a 75x24px light-grey-on-light-grey control that reads as disabled
+    * printed the section name on cards inside that very section
+    * used `.Summary`, which ignores hand-written `description` front matter and
+      concatenates across stripped block tags ("…disposableEvery AI assistant…")
+*/ -}}
+
+{{- $showSection := ne page.RelPermalink .CurrentSection.RelPermalink -}}
+
+{{- /* Prefer the author's own description. Otherwise repair `.Summary`:
+       Hugo strips block tags without leaving a separator, so replace the
+       closing tags with a space before flattening, collapse the whitespace,
+       then drop a trailing bare URL — 21 notes end with their source link, and
+       unhandled it lands mid-card as three lines of raw URL. */ -}}
+{{- $summary := "" -}}
+{{- with .Description -}}
+  {{- $summary = . -}}
+{{- else -}}
+  {{- /* Pipeline, in order:
+         1. Drop source links (rendered by render-link.html) — they are
+            navigation, not prose. Removing the whole anchor is more reliable
+            than matching a raw URL, which no longer appears in the output.
+         2. Replace closing block tags with a space. Hugo strips them with no
+            separator, which fused sentences ("…disposableEvery AI assistant…").
+         3. Flatten to text.
+         4. Decode entities once. `plainify` removes tags but leaves &rsquo;
+            and -&gt; encoded, which were then escaped again on output and
+            rendered literally as "I&rsquo;ve".
+         5. Collapse whitespace, then drop any trailing bare URL. */ -}}
+  {{- $summary = .Summary
+        | replaceRE `(?s)<a class="bare-link".*?</a>` ""
+        | replaceRE `</(p|h[1-6]|div|li|ul|ol|blockquote|pre|figure)>` " "
+        | plainify
+        | htmlUnescape
+        | replaceRE `\s+` " "
+        | replaceRE `https?://\S+\s*$` "" -}}
+  {{- /* `trim` takes (INPUT, CUTSET) and a Go pipeline appends the piped value
+         as the LAST argument, so `| trim " "` would call trim(" ", $summary)
+         and return an empty string. Call it positionally. */ -}}
+  {{- $summary = trim $summary " " -}}
+{{- end -}}
+
+{{- /* A handful of notes are nothing but an image and a source link, so the
+       cleaned summary comes out empty. Name the source instead of leaving a
+       card with only a title on it. */ -}}
+{{- $source := "" -}}
+{{- if not $summary -}}
+  {{- with findRE `https?://[^\s"'<>]+` .RawContent 1 -}}
+    {{- $source = replaceRE `^https?://(www\.)?([^/]+).*$` "$2" (index . 0) -}}
+  {{- end -}}
+{{- end -}}
+
+<article class="post-card bg-white pa4 mb4">
+  {{- if $showSection }}
+    {{- with .CurrentSection }}
+      <a href="{{ .RelPermalink }}" class="link f7 ttu tracked silver hover-mid-gray db mb2">{{ .Title }}</a>
+    {{- end }}
+  {{- end }}
+
+  {{/* h2, not h1: the page title is the h1. */}}
+  <h2 class="f3 fw6 athelas near-black mt0 mb2 lh-title">
+    <a href="{{ .RelPermalink }}" class="link near-black dim">{{ .Title }}</a>
+  </h2>
+
+  <p class="f7 silver mt0 mb3">
+    {{- if not .Date.IsZero -}}
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+    {{- end -}}
+    {{- if and (eq .Section "posts") (gt .ReadingTime 0) -}}
+      <span class="mh1">·</span>{{ i18n "readingTime" .ReadingTime }}
+    {{- end -}}
+  </p>
+
+  {{- with $summary }}
+    <div class="f5 lh-copy mid-gray nested-links">{{ . }}</div>
+  {{- else }}
+    {{- with $source }}
+      <p class="f6 lh-copy silver mv0">A link to {{ . }}</p>
+    {{- end }}
+  {{- end }}
+
+  {{- /* Only offer to continue when there is something left to read. Notes are
+         often shorter than the summary limit, so the theme's unconditional
+         "read more" promised content that did not exist. The label names the
+         destination instead of repeating "read more" down the page. */ -}}
+  {{- if and .Truncated (not .Description) }}
+    <a href="{{ .RelPermalink }}" class="post-card-more link f6 mid-gray hover-near-black dib mt3"
+       aria-label="Continue reading: {{ .Title }}">Continue reading <span aria-hidden="true">&rarr;</span></a>
+  {{- end }}
+</article>

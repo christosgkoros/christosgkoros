@@ -1,7 +1,7 @@
 +++
 title = 'Change stakeholders' 
 date = 2024-01-09T09:30:03+03:00 
-tags = ['leadership']
+tags = ['Leadership']
 +++
 
 'Who' questions to ask when leading change:

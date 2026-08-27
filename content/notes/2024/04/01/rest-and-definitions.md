@@ -1,7 +1,7 @@
 +++
 title = 'Rest and Definitions'
 date = 2024-04-01T12:53:46+03:00
-tags = ["rest","quotes"]
+tags = ["REST","Quotes"]
 +++
 
 REST means different things to different audiences. It means one thing to the developer completing their assignments in Jira, another to the engineering leader attempting to herd cats through a transformation, and yet another to the marketplace selling solutions. The term's conflation isn't an indictment of people's laxness but an example of its success.

@@ -1,7 +1,7 @@
 +++
 title = 'CLI Design'
 date = 2024-02-10T07:28:55+02:00
-tags = ["cli", "design", "DX"]
+tags = ["CLI", "Design", "DX"]
 +++
 
 Great insights @ [https://clig.dev/#output](https://clig.dev/#output) like `Responsive is more important than fast`

@@ -1,7 +1,7 @@
 +++
 title = 'Common Strategy Mistakes'
 date = 2024-04-04T09:30:21+03:00
-tags = ["strategy", "management"]
+tags = ["Strategy", "Management"]
 description =  ""
 +++
 

@@ -1,8 +1,8 @@
 +++ 
   title = "The Strategy Tax"
   date = "2024-05-23T15:28:26.493Z"
-  tags = [ "leadership","innovation" ]
-  draft = "false"
+  tags = [ "Leadership","Innovation" ]
+  draft = false
 +++
 The problem that big, established companies get into is what is referred to as the strategy tax.
 

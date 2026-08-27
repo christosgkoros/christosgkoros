@@ -1,0 +1,53 @@
+{{- /*
+  toc.html
+
+  A sticky table of contents for the right rail of long posts.
+
+  Long reference posts here run to dozens of sections with no way to see what
+  is in the document or jump to an entry, while the right rail sits empty for
+  almost the whole scroll. This fills it.
+
+  Built from `.Fragments.Headings` rather than `.TableOfContents` so the markup
+  and nesting are controllable, and so it keeps working through the custom
+  heading render hook in layouts/_default/_markup/render-heading.html.
+
+  Shown automatically once a page has enough top-level sections to be worth
+  indexing. Force it on or off per page with `toc = true` / `toc = false`.
+*/ -}}
+
+{{- /* `.Fragments.Headings` wraps the document in a synthetic level-0 root
+       node, so the real top-level headings sit one level down. Descend past
+       any level-0 node rather than assuming the shape. */ -}}
+{{- $headings := slice -}}
+{{- range .Fragments.Headings -}}
+  {{- if eq .Level 0 -}}
+    {{- range .Headings -}}{{- $headings = $headings | append . -}}{{- end -}}
+  {{- else -}}
+    {{- $headings = $headings | append . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $min := 3 -}}
+{{- $auto := ge (len $headings) $min -}}
+{{- $show := $auto -}}
+{{- if isset .Params "toc" -}}{{- $show = .Params.toc -}}{{- end -}}
+
+{{- if and $show $headings -}}
+<nav class="toc bg-light-gray pa3 mb3" aria-labelledby="toc-heading">
+  <p class="f5 b mb2 mt0 dark-gray" id="toc-heading">On this page</p>
+  <ol class="toc-list list pa0 ma0">
+    {{- range $headings }}
+      <li class="toc-l2">
+        <a href="#{{ .ID }}">{{ .Title | plainify | safeHTML }}</a>
+        {{- with .Headings }}
+          <ol class="toc-sublist list pa0 ma0">
+            {{- range . }}
+              <li class="toc-l3"><a href="#{{ .ID }}">{{ .Title | plainify | safeHTML }}</a></li>
+            {{- end }}
+          </ol>
+        {{- end }}
+      </li>
+    {{- end }}
+  </ol>
+</nav>
+{{- end -}}

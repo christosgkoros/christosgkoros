@@ -1,0 +1,33 @@
+{{- /*
+  Search index for layouts/_default/search.html.
+
+  Deliberately dependency-free: a flat JSON array fetched once and filtered in
+  the browser, rather than Pagefind/lunr and a build step. At ~130 items the
+  whole index is small enough that this is faster than anything that ships a
+  library, and it keeps the site's "no JavaScript beyond analytics" property
+  close to intact.
+
+  Body text is included but capped, so a search matches more than titles
+  without the index growing without bound.
+*/ -}}
+{{- $items := slice -}}
+{{- $pages := where .Site.RegularPages "Section" "in" (slice "posts" "notes" "speaking") -}}
+{{- range (sort $pages "Date" "desc") -}}
+  {{- $body := .Plain | replaceRE `\s+` " " -}}
+  {{- /* `apply` passes each element as the dot to a *function*; it cannot do
+         field access, so collect the labels explicitly. */ -}}
+  {{- $tags := slice -}}
+  {{- range .GetTerms "tags" -}}
+    {{- $tags = $tags | append .LinkTitle -}}
+  {{- end -}}
+  {{- $items = $items | append (dict
+        "t" .Title
+        "u" .RelPermalink
+        "s" .Section
+        "d" (.Date.Format "2 Jan 2006")
+        "y" (.Date.Format "2006")
+        "g" $tags
+        "x" (substr $body 0 400)
+      ) -}}
+{{- end -}}
+{{- $items | jsonify (dict "indent" "") -}}

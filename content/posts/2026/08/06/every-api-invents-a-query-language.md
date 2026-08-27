@@ -1,7 +1,7 @@
 +++
 title = 'Every API Invents a Query Language'
 date = 2026-08-06T09:00:00+03:00
-tags = ['apis', 'api-design', 'openapi', 'json-schema', 'query-language']
+tags = ['APIs', 'API design', 'OpenAPI', 'JSON schema', 'Query language']
 description = "Filter syntax gets reinvented on every search endpoint. The gap is not that no standard exists — it is that none of them can be described."
 +++
 

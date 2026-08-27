@@ -1,0 +1,43 @@
+{{- /*
+  stream-entry.html
+
+  One row of the chronological stream: date in a left gutter, title, a small
+  kind label, and a summary for longer pieces.
+
+  Replaces the card for this view. Cards forced every item into the same
+  rectangle regardless of whether it was a two-line note or a 3,000-word
+  reference, which is what made the listing read as generic. Here a note is
+  one line and a post carries a summary, so length itself signals weight.
+
+  Written as a partial rather than inline so the section lists can adopt the
+  same row later without duplicating it.
+*/ -}}
+
+{{- $summary := "" -}}
+{{- with .Description -}}
+  {{- $summary = . -}}
+{{- else -}}
+  {{- $summary = .Summary
+        | replaceRE `(?s)<a class="bare-link".*?</a>` ""
+        | replaceRE `</(p|h[1-6]|div|li|ul|ol|blockquote|pre|figure)>` " "
+        | plainify
+        | htmlUnescape
+        | replaceRE `\s+` " "
+        | replaceRE `https?://\S+\s*$` "" -}}
+  {{- $summary = trim $summary " " -}}
+{{- end -}}
+
+{{- /* Notes are short enough that the title carries them; a summary would just
+       restate it. Posts get one line of context. */ -}}
+{{- $showSummary := and (eq .Section "posts") $summary -}}
+
+<a class="stream-entry" href="{{ .RelPermalink }}">
+  <time class="stream-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+  <span class="stream-title">
+    {{ .Title }}
+    <span class="stream-kind">{{ with .CurrentSection }}{{ strings.TrimSuffix "s" .Title }}{{ end }}</span>
+  </span>
+  {{- if $showSummary }}
+    <span class="stream-summary">{{ $summary | truncate 160 }}</span>
+  {{- end }}
+</a>

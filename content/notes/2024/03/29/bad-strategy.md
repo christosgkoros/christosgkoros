@@ -1,7 +1,7 @@
 +++
 title = 'Bad Strategy'
 date = 2024-03-29T14:40:26+02:00
-tags = ["strategy", "management"]
+tags = ["Strategy", "Management"]
 +++
 
  Bad strategy ignores the power of choice and focus, trying instead to accommodate a multitude of conflicting demands and interests. Like a quarterback whose only advice to his teammates is “Let’s win,” bad strategy covers up its failure to guide by embracing the language of broad goals, ambition, vision, and values.

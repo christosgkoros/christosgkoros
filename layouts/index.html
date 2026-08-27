@@ -1,64 +1,75 @@
+{{/*
+  Homepage — "quiet" direction.
+
+  Deliberately does not use `site-header.html`. Every other page opens with the
+  black title band; here the page *is* the introduction, so a band repeating the
+  name above a hero repeating the name was both duplication and ~390px of the
+  fold spent before any content. The topbar is a thin light strip instead, with
+  the orange rule as the only mark.
+*/}}
+
+{{ define "header" }}
+  {{/* Topbar only — the hero below already carries the name and tagline. */}}
+  <header>{{ partial "site-topbar.html" (dict "ctx" .) }}</header>
+{{ end }}
+
 {{ define "main" }}
+  <div class="site-wrap">
 
-  {{/* ── Hero intro ── */}}
-  <div class="ph3 ph5-l pv3 pv4-l center w-100 w-70-ns">
-    <p class="f4 lh-copy dark-gray mt0 mb2">
-      There's something magical about encapsulating complex information and processes into a single interaction. That's what drew me to APIs — and now that AI agents are calling them too, the stakes are even higher.
-    </p>
-    <p class="f4 lh-copy dark-gray mv2">
-      I'm a Product Manager at <a href="https://www.postman.com" class="link dark-gray underline-hover">Postman</a>, where I work on the platform and MCP Server that developers and AI agents use to build with APIs. I also run the <a href="https://www.meetup.com/API-Athens/" class="link dark-gray underline-hover">API Athens meetup</a>. This is where I write about what I'm learning — APIs, agentic systems, design, and how they all connect.
-    </p>
-    <div class="mt3">
-      <a href="https://calendly.com/christos-gkoros/30min" class="f6 no-underline white bg-dark-gray hover-bg-mid-gray dib ph3 pv2 br2">Let's chat</a>
-      <a href="/index.xml" class="f6 link mid-gray dim dib ph3 pv2">RSS feed</a>
-    </div>
-  </div>
-
-  {{/* ── Divider ── */}}
-  <div class="w-100 bb b--black-10"></div>
-
-  {{/* ── Recent content from posts + notes ── */}}
-  {{ $posts := where .Site.RegularPages "Section" "posts" }}
-  {{ $notes := where .Site.RegularPages "Section" "notes" }}
-  {{ $allContent := union $posts $notes }}
-  {{ $allContent = sort $allContent "Date" "desc" }}
-  {{ $n_recent := $.Param "recent_posts_number" | default 3 }}
-  {{ $total := len $allContent }}
-
-  {{ if ge $total 1 }}
-    <div class="pa3 pa4-ns w-100 w-70-ns center">
-      <h2 class="f3 fw4 dark-gray mb4">Recent</h2>
-
-      <section class="w-100 mw8">
-        {{ range (first $n_recent $allContent) }}
-          <div class="relative w-100 mb4">
-            {{ .Render "summary-with-image" }}
-          </div>
-        {{ end }}
-      </section>
-
-      {{ if ge $total (add $n_recent 1) }}
-      <section class="w-100 mt3">
-        <h3 class="f4 fw4 dark-gray mb3">More</h3>
-        {{ range (first 4 (after $n_recent $allContent)) }}
-          <h2 class="f5 fw4 mb4 dib {{ cond (eq $.Site.Language.LanguageDirection "rtl") "ml3" "mr3" }}">
-            <a href="{{ .RelPermalink }}" class="link dark-gray dim">
-              {{ .Title }}
-            </a>
-          </h2>
-        {{ end }}
-
-        <div class="flex flex-wrap mt3">
-          {{ with .Site.GetPage "section" "posts" }}
-            <a href="{{ .RelPermalink }}" class="link db f6 pa2 br3 bg-mid-gray white dim tc mr2">All posts</a>
-          {{ end }}
-          {{ with .Site.GetPage "section" "notes" }}
-            <a href="{{ .RelPermalink }}" class="link db f6 pa2 br3 bg-mid-gray white dim tc">All notes</a>
-          {{ end }}
-        </div>
-      </section>
+    {{/* ── Intro ── */}}
+    <div class="home-hero">
+      {{/* Drop a photo at assets/img/portrait.{jpg,png,webp} and it appears
+           here, resized and served as WebP. Rendered only when the file
+           exists, so nothing placeholder-ish ships in the meantime. */}}
+      {{ $portrait := "" }}
+      {{ range (slice "img/portrait.jpg" "img/portrait.png" "img/portrait.webp") }}
+        {{ if not $portrait }}{{ $portrait = resources.Get . }}{{ end }}
+      {{ end }}
+      {{ with $portrait }}
+        {{ $img := .Fill "152x152 webp q85 Center" }}
+        <img class="home-portrait" src="{{ $img.RelPermalink }}"
+             width="76" height="76" alt="Christos Gkoros" loading="eager" decoding="async" />
       {{ end }}
 
+      <h1 class="home-name">{{ .Site.Title }}</h1>
+      {{ with .Description }}<p class="home-role">{{ . }}</p>{{ end }}
+
+      {{/* Prose comes from content/_index.md, not from this template. It was
+           hardcoded here, which meant editing the homepage copy required
+           editing a Go template — the content file existed but held only front
+           matter. */}}
+      <div class="home-intro">
+        {{ .Content }}
+      </div>
+
+      <p class="home-cta">
+        <a class="home-cta-primary" href="https://calendly.com/christos-gkoros/30min">Let's chat</a>
+        <span class="home-cta-sep" aria-hidden="true">·</span>
+        <a class="home-cta-quiet" href="/index.xml">RSS feed</a>
+      </p>
     </div>
-  {{ end }}
+
+    {{/* ── Recent ── posts and notes interleaved by date. The kind label on each
+         row does the work the separate sections used to, without splitting the
+         chronology. */}}
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ $notes := where .Site.RegularPages "Section" "notes" }}
+    {{ $recent := first 8 (sort (union $posts $notes) "Date" "desc") }}
+
+    {{ with $recent }}
+      <section class="home-stream">
+        <h2 class="stream-head">Recent</h2>
+        {{ range . }}
+          {{ partial "stream-entry.html" . }}
+        {{ end }}
+
+        <p class="home-more">
+          {{ with $.Site.GetPage "section" "posts" }}<a href="{{ .RelPermalink }}">All posts</a>{{ end }}
+          {{ with $.Site.GetPage "section" "notes" }}<a href="{{ .RelPermalink }}">All notes</a>{{ end }}
+          {{ with $.Site.GetPage "/tags" }}<a href="{{ .RelPermalink }}">Browse tags</a>{{ end }}
+        </p>
+      </section>
+    {{ end }}
+
+  </div>
 {{ end }}

@@ -1,8 +1,8 @@
 +++ 
 title = "30 system design concepts"
 date = "2024-05-04T16:54:09.871Z"
-tags = [ "system-design","architecture" ]
-draft = "false"
+tags = [ "System design","Architecture" ]
+draft = false
 +++
 1. Use autoscaling for traffic spikes
 2. design for scalability from the start

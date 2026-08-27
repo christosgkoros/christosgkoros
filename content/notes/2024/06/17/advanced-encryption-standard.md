@@ -1,8 +1,8 @@
 +++ 
   title = "Advanced Encryption Standard"
   date = "2024-06-17T14:14:42.914Z"
-  tags = [ "security","api-design" ]
-  draft = "false"
+  tags = [ "Security","API design" ]
+  draft = false
 +++
 The Advanced Encryption Standard (AES) is a specification for how electronic data should be encrypted that was published by the National Insitute for Standards in Technology (NIST) in the U.S. in 2001
   

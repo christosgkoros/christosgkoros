@@ -1,7 +1,7 @@
 +++
-title = '[Podcast] Life of Dev '
+title = '[Podcast] Life of Dev'
 date = 2024-05-17T21:04:29+03:00
-tags = ["speaking", "software", "ai"]
+tags = ["Speaking", "Software", "AI"]
 description =  ""
 +++
 

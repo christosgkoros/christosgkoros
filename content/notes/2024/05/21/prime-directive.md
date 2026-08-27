@@ -1,8 +1,8 @@
 +++ 
   title = "Prime directive"
   date = "2024-05-21T14:06:37.094Z"
-  tags = [ "communication","teamwork","leadership" ]
-  draft = "false"
+  tags = [ "Communication","Teamwork","Leadership" ]
+  draft = false
 +++
 Engineers, although they may have better ideas or insights, their communication style generates resentment that will limit how much impact they can have in the future.
 
