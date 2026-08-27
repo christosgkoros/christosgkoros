@@ -4,11 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     {{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
-    <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+    {{/* `.Params.Title` is only set from front matter, so it is empty on
+         auto-generated pages. On Hugo 0.123 that left all 129 tag pages with a
+         bare "christos gkoros" title. `.Title` is populated for every page
+         kind; the guard stops the homepage rendering its name twice. */}}
+    <title>{{ block "title" . }}{{ if and .Title (ne .Title .Site.Title) }}{{ .Title }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
     {{/* `initial-scale=1` added: without it iOS Safari does not reliably set the
          initial zoom level. */}}
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
-    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+    <meta name="description" content="{{ partial "page-description.html" . }}">
     {{ hugo.Generator }}
     {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
     {{ $production := eq (getenv "HUGO_ENV") "production" | or (eq site.Params.env "production") }}

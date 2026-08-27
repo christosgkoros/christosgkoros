@@ -48,16 +48,7 @@
   {{- with site.Params.og_image -}}{{- $imgAbs = . | absURL -}}{{- end -}}
 {{- end -}}
 
-{{- $desc := "" -}}
-{{- with .Description -}}
-  {{- $desc = . -}}
-{{- else -}}
-  {{- if .IsPage -}}
-    {{- $desc = .Summary | plainify | truncate 200 -}}
-  {{- else -}}
-    {{- $desc = site.Params.description -}}
-  {{- end -}}
-{{- end -}}
+{{- $desc := partial "page-description.html" . -}}
 
 <meta property="og:title" content="{{ .Title | default site.Title }}" />
 <meta property="og:description" content="{{ $desc }}" />

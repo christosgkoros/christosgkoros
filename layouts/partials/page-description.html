@@ -1,0 +1,28 @@
+{{- /*
+  page-description.html
+
+  Returns the description for a page. Used by both baseof.html (meta
+  description) and social-meta.html (og:description / twitter:description) so
+  the two cannot drift apart.
+
+  Order:
+    1. `description` from front matter
+    2. for a single page, its summary
+    3. for a taxonomy term, "Everything tagged X" — otherwise all 129 tag
+       pages shared the generic site description, which is a duplicate-content
+       signal and tells a searcher nothing about the page
+    4. the site description
+*/ -}}
+{{- $desc := "" -}}
+{{- with .Description -}}
+  {{- $desc = . -}}
+{{- else -}}
+  {{- if .IsPage -}}
+    {{- $desc = .Summary | plainify | replaceRE `\s+` " " | truncate 200 -}}
+  {{- else if eq .Kind "term" -}}
+    {{- $desc = printf "%s — %d %s." (i18n "taxonomyPageList" .) (len .Pages) (cond (eq (len .Pages) 1) "item" "items") -}}
+  {{- else -}}
+    {{- $desc = site.Params.description -}}
+  {{- end -}}
+{{- end -}}
+{{- return $desc -}}

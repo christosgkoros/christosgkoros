@@ -49,6 +49,14 @@ titleCaseStyle = "none"
 
 # The home page additionally renders as JSON (layouts/index.json), which is the
 # search index consumed by layouts/_default/search.html.
+# Search sits last in the bar, after speaking (weight 9). Defined here rather
+# than in content/search.md front matter: Hugo 0.123 does not register
+# front-matter menu entries for pages excluded from lists.
+[[menu.main]]
+  name = "search"
+  url = "/search/"
+  weight = 10
+
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
